@@ -15,8 +15,8 @@ MonoBehaviour:
   Id: 100
   Name: Pistol
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/Pistol.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: Pistol
+  SpriteAddress: Weapons
   DisplayOffset: {x: 0.405, y: 0.26, z: 0.734}
   Damage: 1
   Range: 100

@@ -15,6 +15,6 @@ MonoBehaviour:
   Id: 2
   Name: Capsule
   Type: 0
-  PrefabAddress: Assets/Addressables/Objects/Capsule.prefab
-  SpriteAddress: Assets/Addressables/UI/Objects.png
+  PrefabAddress: Capsule
+  SpriteAddress: Objects
   DisplayOffset: {x: 0, y: 0, z: 0}

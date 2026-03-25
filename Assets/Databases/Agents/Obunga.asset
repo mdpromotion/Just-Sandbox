@@ -19,4 +19,4 @@ MonoBehaviour:
   Damage: 10
   AttackSpeed: 1
   VisionRange: 125
-  PrefabAddress: Assets/Addressables/NPC/Obunga.prefab
+  PrefabAddress: Obunga

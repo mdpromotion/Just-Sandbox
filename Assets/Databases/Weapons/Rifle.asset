@@ -15,8 +15,8 @@ MonoBehaviour:
   Id: 103
   Name: Rifle
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/Rifle.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: Rifle
+  SpriteAddress: Weapons
   DisplayOffset: {x: 0.08, y: 0.2, z: 0.022}
   Damage: 15
   Range: 0

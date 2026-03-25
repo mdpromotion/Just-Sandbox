@@ -15,5 +15,6 @@ MonoBehaviour:
   Id: 5
   Name: Floor
   Type: 0
-  PrefabAddress: Assets/Addressables/Objects/Floor.prefab
-  SpriteAddress: Assets/Addressables/UI/Objects.png
+  PrefabAddress: Floor
+  SpriteAddress: Objects
+  DisplayOffset: {x: 0, y: 0, z: 0}

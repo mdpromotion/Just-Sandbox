@@ -19,4 +19,4 @@ MonoBehaviour:
   Damage: 15
   AttackSpeed: 2
   VisionRange: 60
-  PrefabAddress: Assets/Addressables/NPC/Vibe.prefab
+  PrefabAddress: Vibe

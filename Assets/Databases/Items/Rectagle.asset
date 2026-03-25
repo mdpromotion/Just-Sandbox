@@ -15,5 +15,6 @@ MonoBehaviour:
   Id: 3
   Name: Rectagle
   Type: 0
-  PrefabAddress: Assets/Addressables/Objects/Rectangle.prefab
-  SpriteAddress: Assets/Addressables/UI/Objects.png
+  PrefabAddress: Rectagle
+  SpriteAddress: Objects
+  DisplayOffset: {x: 0, y: 0, z: 0}

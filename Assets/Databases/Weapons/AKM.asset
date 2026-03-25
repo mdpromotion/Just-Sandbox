@@ -15,8 +15,8 @@ MonoBehaviour:
   Id: 102
   Name: AKM
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/AKM.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: AKM
+  SpriteAddress: Weapons
   DisplayOffset: {x: 0.129, y: 0.12, z: 0.379}
   Damage: 6
   Range: 3

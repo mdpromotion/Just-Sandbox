@@ -19,4 +19,4 @@ MonoBehaviour:
   Damage: 20
   AttackSpeed: 1
   VisionRange: 100
-  PrefabAddress: Assets/Addressables/NPC/Selene.prefab
+  PrefabAddress: Selene

@@ -32,7 +32,7 @@ namespace Feature.PlayerExitMenu.Presentation
             switch (type)
             {
                 case NavigationButtonType.Continue:
-                    await _menuUseCase.Execute();
+                    await _menuUseCase.LoadScene("Menu");
                     break;
                 case NavigationButtonType.Exit:
                     _menuUseCase.ToggleMenu();

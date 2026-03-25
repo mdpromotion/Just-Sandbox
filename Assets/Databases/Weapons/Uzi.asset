@@ -15,8 +15,8 @@ MonoBehaviour:
   Id: 101
   Name: Uzi
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/Uzi.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: Uzi
+  SpriteAddress: Weapons
   DisplayOffset: {x: 0.463, y: 0.362, z: 0.51}
   Damage: 0
   Range: 0

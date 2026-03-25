@@ -22,7 +22,7 @@ namespace Feature.Inventory.Presentation
             IItemConfigService config,
             ISpriteFactory spriteFactory,
             IInventoryEvents events,
-            string nothingSpriteAddress = "Assets/Addressables/UI/Nothing.png")
+            string nothingSpriteAddress = "Nothing")
         {
             _view = view;
             _config = config;

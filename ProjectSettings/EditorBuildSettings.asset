@@ -8,14 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Plugins/GamePush/InitScene/AwaitInit.unity
     guid: e4f60b4b83a69419381b62e55fcda639
-  - enabled: 0
-    path: Assets/Scenes/Menu.unity
+  - enabled: 1
+    path: Assets/Addressables/Scenes/Menu.unity
     guid: f2f3b4c3b1ecbc546a5b09d2b086991a
-  - enabled: 0
-    path: Assets/Scenes/Baseplate.unity
+  - enabled: 1
+    path: Assets/Addressables/Scenes/Baseplate.unity
     guid: 7896dc9d6ed65494ba919276ef02e375
-  - enabled: 0
-    path: Assets/Scenes/Forest.unity
+  - enabled: 1
+    path: Assets/Addressables/Scenes/Forest.unity
     guid: 6dbc7d1e355b4564fa20f9d15f0fb42c
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 204ac3dae9175e54f8cf2abd31b54062, type: 2}

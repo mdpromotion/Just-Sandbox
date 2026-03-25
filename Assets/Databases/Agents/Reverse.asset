@@ -19,4 +19,4 @@ MonoBehaviour:
   Damage: 20
   AttackSpeed: 0.75
   VisionRange: 100
-  PrefabAddress: Assets/Addressables/NPC/Reverse.prefab
+  PrefabAddress: Reverse

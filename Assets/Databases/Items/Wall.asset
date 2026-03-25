@@ -15,5 +15,6 @@ MonoBehaviour:
   Id: 4
   Name: Wall
   Type: 0
-  PrefabAddress: Assets/Addressables/Objects/Wall.prefab
-  SpriteAddress: Assets/Addressables/UI/Objects.png
+  PrefabAddress: Wall
+  SpriteAddress: Objects
+  DisplayOffset: {x: 0, y: 0, z: 0}

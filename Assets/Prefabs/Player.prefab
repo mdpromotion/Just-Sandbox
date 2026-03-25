@@ -18673,16 +18673,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3997441042748134890}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00024}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6850977773883708945}
+  m_Father: {fileID: 2203273025711477993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 334.59998}
-  m_SizeDelta: {x: 929.1559, y: 666.252}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_SizeDelta: {x: 0.755249, y: 0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1170921345014057898
 CanvasRenderer:
@@ -18706,7 +18706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -30700,6 +30700,7 @@ RectTransform:
   - {fileID: 3221890245698201049}
   - {fileID: 6014180322665899133}
   - {fileID: 6850977773883708945}
+  - {fileID: 587857692461424343}
   - {fileID: 998775841927644773}
   - {fileID: 8725096254033260702}
   - {fileID: 2290513113753061971}
@@ -35494,7 +35495,6 @@ RectTransform:
   - {fileID: 6545211085535214531}
   - {fileID: 2246614867087600193}
   - {fileID: 2770689921761510460}
-  - {fileID: 587857692461424343}
   m_Father: {fileID: 2203273025711477993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}

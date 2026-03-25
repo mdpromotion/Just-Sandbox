@@ -15,8 +15,8 @@ MonoBehaviour:
   Id: 104
   Name: M4
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/M4.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: M4
+  SpriteAddress: Weapons
   DisplayOffset: {x: 0.12, y: 0.1, z: 0.21}
   Damage: 6
   Range: 0

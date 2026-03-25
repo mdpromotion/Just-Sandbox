@@ -15,8 +15,9 @@ MonoBehaviour:
   Id: 105
   Name: M2
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/M2.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: M2
+  SpriteAddress: Weapons
+  DisplayOffset: {x: 0, y: 0, z: 0}
   Damage: 0
   Range: 0
   Cooldown: 0

@@ -15,8 +15,9 @@ MonoBehaviour:
   Id: 200
   Name: Grenade
   Type: 1
-  PrefabAddress: Assets/Addressables/Weapons/Grenade.prefab
-  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  PrefabAddress: Grenade
+  SpriteAddress: Weapons
+  DisplayOffset: {x: 0, y: 0, z: 0}
   Damage: 0
   Range: 0
   Cooldown: 0

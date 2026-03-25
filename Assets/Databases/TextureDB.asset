@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textures:
   - Id: 0
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood.mat
+    MaterialAddress: Wood
   - Id: 1
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood1.mat
+    MaterialAddress: Wood1
   - Id: 2
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood2.mat
+    MaterialAddress: Wood2
   - Id: 3
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood3.mat
+    MaterialAddress: Wood3
   - Id: 4
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Concrete.mat
+    MaterialAddress: Concrete
   - Id: 5
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Plastic.mat
+    MaterialAddress: Plastic
   - Id: 6
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Red.mat
+    MaterialAddress: Red
   - Id: 7
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Blue.mat
+    MaterialAddress: Blue
   - Id: 8
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Green.mat
+    MaterialAddress: Green
   - Id: 9
-    MaterialAddress: Assets/Addressables/Materials/Toolbox/Yellow.mat
+    MaterialAddress: Yellow

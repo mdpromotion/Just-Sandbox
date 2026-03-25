@@ -29,9 +29,9 @@ namespace Feature.PlayerExitMenu.Application
             _toggleMenu.ToggleMenu(state);
         }
 
-        public async Task Execute(string basePath = "Assets/Scenes/Menu.unity")
+        public async Task LoadScene(string path)
         {
-            var result = await _sceneManager.LoadSceneAsync(basePath);
+            var result = await _sceneManager.LoadSceneAsync(path);
             if (!result.IsSuccess)
             {
                 _logger.LogError(LogTag, result.Error);

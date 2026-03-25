@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: NPC
+  m_EditorClassIdentifier: 
+  m_GroupName: NPC
+  m_GUID: 6d789b27d4b91744fb33915612e44280
+  m_SerializeEntries:
+  - m_GUID: 526dac3ec2b8c6e45b4b5952414534ed
+    m_Address: Incredible
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c0a3a83321a74241b30f138a47e3233
+    m_Address: Reverse
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9447fe8b00530464a8bb07a4fb5e9443
+    m_Address: Obunga
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4bcb82d66c3604439cdbf12302ee787
+    m_Address: Selene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b86e09f700821a944a8b963878546ad5
+    m_Address: Vibe
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0d17d06eb80c9ca48a61464c41b36465, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f6e187e97f451cc419b720e1354e1dcb, type: 2}
+    - {fileID: 11400000, guid: 5337cdff5fd5e27428d2e9325b2c2ba6, type: 2}
