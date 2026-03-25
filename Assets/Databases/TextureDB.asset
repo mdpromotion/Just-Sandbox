@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97a5c63af1fec84681a602a9dfe5195, type: 3}
+  m_Name: TextureDB
+  m_EditorClassIdentifier: 
+  _textures:
+  - Id: 0
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood.mat
+  - Id: 1
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood1.mat
+  - Id: 2
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood2.mat
+  - Id: 3
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Wood3.mat
+  - Id: 4
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Concrete.mat
+  - Id: 5
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Plastic.mat
+  - Id: 6
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Red.mat
+  - Id: 7
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Blue.mat
+  - Id: 8
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Green.mat
+  - Id: 9
+    MaterialAddress: Assets/Addressables/Materials/Toolbox/Yellow.mat

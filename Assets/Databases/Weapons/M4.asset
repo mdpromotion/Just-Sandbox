@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ca81bfb4a67ba4eb59d486b44ac16a, type: 3}
+  m_Name: M4
+  m_EditorClassIdentifier: 
+  Id: 104
+  Name: M4
+  Type: 1
+  PrefabAddress: Assets/Addressables/Weapons/M4.prefab
+  SpriteAddress: Assets/Addressables/UI/Weapons.png
+  DisplayOffset: {x: 0.12, y: 0.1, z: 0.21}
+  Damage: 6
+  Range: 0
+  Cooldown: 0.175
+  Knockback: 2.5
+  MaxAmmoInClip: 30
+  ReserveAmmo: 300
+  WeaponType: 0
