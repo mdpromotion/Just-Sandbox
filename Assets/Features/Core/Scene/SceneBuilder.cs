@@ -21,7 +21,6 @@ public class SceneBuilder : MonoInstaller
             Container.Install<CameraInstaller>();
         }
 
-        Container.Install<SceneInstaller>();
         Container.Install<PlayerInstaller>();
         Container.Install<AgentInstaller>();
         Container.Install<InventoryInstaller>();

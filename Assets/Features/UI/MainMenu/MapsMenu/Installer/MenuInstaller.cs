@@ -7,7 +7,6 @@ public class MenuInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Install<SceneInstaller>();
         Container.Bind<NavigationButton>().FromComponentsInHierarchy().AsSingle();
         Container.Bind<LoadSceneButton>().FromComponentsInHierarchy().AsSingle();
         Container.Bind<IView>().To<View>().FromComponentInHierarchy().AsSingle();

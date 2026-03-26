@@ -1,7 +1,7 @@
 using Feature.Scene.Infrastructure;
 using Zenject;
 
-public class SceneInstaller : Installer
+public class SceneInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
