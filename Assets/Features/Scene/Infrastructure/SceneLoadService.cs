@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -8,7 +8,7 @@ namespace Feature.Scene.Infrastructure
 {
     public class SceneLoadService
     {
-        public async Task<Result<LoadedSceneData>> LoadScene(
+        public async UniTask<Result<LoadedSceneData>> LoadScene(
             string scenePath,
             LoadSceneMode mode = LoadSceneMode.Single,
             bool releaseOnLoad = false)
@@ -30,7 +30,7 @@ namespace Feature.Scene.Infrastructure
             return Result<LoadedSceneData>.Success(new LoadedSceneData(handle.Result));
         }
 
-        public async Task<Result> UnloadSceneAsync(SceneInstance scene)
+        public async UniTask<Result> UnloadSceneAsync(SceneInstance scene)
         {
             var handle = Addressables.UnloadSceneAsync(scene);
 
