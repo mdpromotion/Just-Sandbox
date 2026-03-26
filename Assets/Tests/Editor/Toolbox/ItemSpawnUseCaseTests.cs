@@ -6,8 +6,9 @@ using Feature.Toolbox.Infrastructure;
 using Moq;
 using NUnit.Framework;
 using Shared.Service;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace Tests.Toolbox
 {
@@ -54,6 +55,14 @@ namespace Tests.Toolbox
             return _createdMaterial;
         }
 
+        private Mock<IItemProvider> CreateItemProviderMock(int configId, string prefabAddress = "prefab")
+        {
+            var mock = new Mock<IItemProvider>();
+            mock.SetupGet(p => p.PrefabAddress).Returns(prefabAddress);
+            mock.SetupGet(p => p.Id).Returns(configId);
+            return mock;
+        }
+
         [Test]
         public async Task TrySpawnObject_ReturnsFailure_WhenItemConfigFails()
         {
@@ -64,7 +73,7 @@ namespace Tests.Toolbox
                 .Setup(i => i.GetItemConfig(itemId))
                 .Returns(Result<IItemProvider>.Failure("Config error"));
 
-            var result = await _sut.TrySpawnObject(itemId, textureId);
+            var result = await _sut.TrySpawnObject(itemId, textureId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual("Config error", result.Error);
@@ -75,7 +84,7 @@ namespace Tests.Toolbox
         {
             int itemId = 2;
             int textureId = 20;
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfig = CreateItemProviderMock(itemId).Object;
 
             _itemConfig
                 .Setup(i => i.GetItemConfig(itemId))
@@ -85,7 +94,7 @@ namespace Tests.Toolbox
                 .Setup(w => w.GetSpawnPoint())
                 .Returns(Result<TransformProvider>.Failure("No spawn point"));
 
-            var result = await _sut.TrySpawnObject(itemId, textureId);
+            var result = await _sut.TrySpawnObject(itemId, textureId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual("No spawn point", result.Error);
@@ -96,7 +105,7 @@ namespace Tests.Toolbox
         {
             int itemId = 3;
             int textureId = 30;
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfig = CreateItemProviderMock(itemId).Object;
             var spawnPoint = new TransformProvider(Vector3.zero, Quaternion.identity);
 
             _itemConfig
@@ -111,7 +120,7 @@ namespace Tests.Toolbox
                 .Setup(t => t.GetMaterialAddress(textureId))
                 .Returns(Result<string>.Failure("Material address error"));
 
-            var result = await _sut.TrySpawnObject(itemId, textureId);
+            var result = await _sut.TrySpawnObject(itemId, textureId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual("Material address error", result.Error);
@@ -122,7 +131,7 @@ namespace Tests.Toolbox
         {
             int itemId = 4;
             int textureId = 40;
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfig = CreateItemProviderMock(itemId).Object;
             var spawnPoint = new TransformProvider(Vector3.zero, Quaternion.identity);
 
             _itemConfig
@@ -139,9 +148,9 @@ namespace Tests.Toolbox
 
             _materialFactory
                 .Setup(m => m.GetMaterial("matAddress"))
-                .ReturnsAsync((Material)null);
+                .Returns(UniTask.FromResult<Material>(null));
 
-            var result = await _sut.TrySpawnObject(itemId, textureId);
+            var result = await _sut.TrySpawnObject(itemId, textureId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual($"Failed to load material for texture id {textureId}", result.Error);
@@ -152,7 +161,7 @@ namespace Tests.Toolbox
         {
             int itemId = 5;
             int textureId = 50;
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfig = CreateItemProviderMock(itemId).Object;
             var spawnPoint = new TransformProvider(Vector3.zero, Quaternion.identity);
             var material = CreateMaterial();
 
@@ -170,13 +179,13 @@ namespace Tests.Toolbox
 
             _materialFactory
                 .Setup(m => m.GetMaterial("matAddress"))
-                .ReturnsAsync(material);
+                .Returns(UniTask.FromResult(material));
 
             _factory
                 .Setup(f => f.SpawnObject(itemConfig.PrefabAddress, spawnPoint.Position, spawnPoint.Rotation, material))
-                .ReturnsAsync((GameObject)null);
+                .Returns(UniTask.FromResult<GameObject>(null));
 
-            var result = await _sut.TrySpawnObject(itemId, textureId);
+            var result = await _sut.TrySpawnObject(itemId, textureId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual($"Failed to spawn object for item id {itemId}", result.Error);
@@ -187,7 +196,7 @@ namespace Tests.Toolbox
         {
             int itemId = 6;
             int textureId = 60;
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfig = CreateItemProviderMock(itemId).Object;
             var spawnPoint = new TransformProvider(Vector3.zero, Quaternion.identity);
             var material = CreateMaterial();
             var go = CreateGameObject();
@@ -206,13 +215,13 @@ namespace Tests.Toolbox
 
             _materialFactory
                 .Setup(m => m.GetMaterial("matAddress"))
-                .ReturnsAsync(material);
+                .Returns(UniTask.FromResult(material));
 
             _factory
                 .Setup(f => f.SpawnObject(itemConfig.PrefabAddress, spawnPoint.Position, spawnPoint.Rotation, material))
-                .ReturnsAsync(go);
+                .Returns(UniTask.FromResult(go));
 
-            var result = await _sut.TrySpawnObject(itemId, textureId);
+            var result = await _sut.TrySpawnObject(itemId, textureId).AsTask();
 
             Assert.IsTrue(result.IsSuccess);
             Assert.AreEqual(go, result.Value.Object);

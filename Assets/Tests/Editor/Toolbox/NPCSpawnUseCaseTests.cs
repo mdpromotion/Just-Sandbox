@@ -5,8 +5,9 @@ using Feature.Toolbox.Application;
 using Moq;
 using NUnit.Framework;
 using Shared.Service;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using System.Threading.Tasks;
 
 namespace Tests.Toolbox
 {
@@ -18,8 +19,6 @@ namespace Tests.Toolbox
         private Mock<IAgentConfigService> _configService;
 
         private NPCSpawnUseCase _sut;
-
-        private GameObject _createdGameObject;
 
         [SetUp]
         public void Setup()
@@ -34,6 +33,14 @@ namespace Tests.Toolbox
                 _configService.Object);
         }
 
+        private Mock<IAgentProvider> CreateAgentProviderMock(int configId, string prefabAddress = "npcPrefab")
+        {
+            var mock = new Mock<IAgentProvider>();
+            mock.SetupGet(a => a.PrefabAddress).Returns(prefabAddress);
+            mock.SetupGet(a => a.Id).Returns(configId);
+            return mock;
+        }
+
         [Test]
         public async Task TrySpawnNPC_ReturnsFailure_WhenAgentConfigFails()
         {
@@ -42,7 +49,7 @@ namespace Tests.Toolbox
                 .Setup(c => c.GetAgentConfig(npcId))
                 .Returns(Result<IAgentProvider>.Failure("Config error"));
 
-            var result = await _sut.TrySpawnNPC(npcId);
+            var result = await _sut.TrySpawnNPC(npcId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual("Config error", result.Error);
@@ -52,7 +59,8 @@ namespace Tests.Toolbox
         public async Task TrySpawnNPC_ReturnsFailure_WhenSpawnPointFails()
         {
             int npcId = 2;
-            var agentConfig = Mock.Of<IAgentProvider>();
+            var agentConfig = CreateAgentProviderMock(npcId).Object;
+
             _configService
                 .Setup(c => c.GetAgentConfig(npcId))
                 .Returns(Result<IAgentProvider>.Success(agentConfig));
@@ -61,7 +69,7 @@ namespace Tests.Toolbox
                 .Setup(w => w.GetSpawnPoint())
                 .Returns(Result<TransformProvider>.Failure("No spawn point"));
 
-            var result = await _sut.TrySpawnNPC(npcId);
+            var result = await _sut.TrySpawnNPC(npcId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual("No spawn point", result.Error);
@@ -71,7 +79,8 @@ namespace Tests.Toolbox
         public async Task TrySpawnNPC_ReturnsFailure_WhenFactoryReturnsNull()
         {
             int npcId = 3;
-            var agentConfig = Mock.Of<IAgentProvider>();
+            var agentConfig = CreateAgentProviderMock(npcId).Object;
+
             _configService
                 .Setup(c => c.GetAgentConfig(npcId))
                 .Returns(Result<IAgentProvider>.Success(agentConfig));
@@ -83,9 +92,9 @@ namespace Tests.Toolbox
 
             _factory
                 .Setup(f => f.SpawnObject(agentConfig.PrefabAddress, spawnPoint.Position, spawnPoint.Rotation, null))
-                .ReturnsAsync((GameObject)null);
+                .Returns(UniTask.FromResult<GameObject>(null));
 
-            var result = await _sut.TrySpawnNPC(npcId);
+            var result = await _sut.TrySpawnNPC(npcId).AsTask();
 
             Assert.IsFalse(result.IsSuccess);
             Assert.AreEqual($"Failed to spawn npc for item id {npcId}", result.Error);
@@ -95,7 +104,8 @@ namespace Tests.Toolbox
         public async Task TrySpawnNPC_ReturnsSuccess_WhenAllSucceeds()
         {
             int npcId = 4;
-            var agentConfig = Mock.Of<IAgentProvider>();
+            var agentConfig = CreateAgentProviderMock(npcId).Object;
+
             _configService
                 .Setup(c => c.GetAgentConfig(npcId))
                 .Returns(Result<IAgentProvider>.Success(agentConfig));
@@ -108,9 +118,9 @@ namespace Tests.Toolbox
             var go = new GameObject();
             _factory
                 .Setup(f => f.SpawnObject(agentConfig.PrefabAddress, spawnPoint.Position, spawnPoint.Rotation, null))
-                .ReturnsAsync(go);
+                .Returns(UniTask.FromResult(go));
 
-            var result = await _sut.TrySpawnNPC(npcId);
+            var result = await _sut.TrySpawnNPC(npcId).AsTask();
 
             Assert.IsTrue(result.IsSuccess);
             Assert.AreEqual(go, result.Value.Object);
