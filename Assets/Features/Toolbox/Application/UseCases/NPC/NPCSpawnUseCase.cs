@@ -1,8 +1,8 @@
+using Cysharp.Threading.Tasks;
 using Feature.Agent.Infrastructure;
 using Feature.Factory.Infrastructure;
 using Feature.Toolbox.Data;
 using Shared.Service;
-using System.Threading.Tasks;
 
 namespace Feature.Toolbox.Application
 {
@@ -26,7 +26,7 @@ namespace Feature.Toolbox.Application
             _configService = configService;
         }
 
-        public async Task<Result<AgentSpawnContext>> TrySpawnNPC(int id)
+        public async UniTask<Result<AgentSpawnContext>> TrySpawnNPC(int id)
         {
             var configResult = _configService.GetAgentConfig(id);
             if (!configResult.IsSuccess)

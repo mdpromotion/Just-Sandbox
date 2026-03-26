@@ -1,7 +1,7 @@
+using Cysharp.Threading.Tasks;
 using Feature.Combat.Application;
 using Feature.Inventory.Application;
 using Feature.Items.Application;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Feature.Toolbox.Application
@@ -41,7 +41,7 @@ namespace Feature.Toolbox.Application
             _logger = logger;
         }
 
-        public async Task TrySpawn(int id)
+        public async UniTask TrySpawn(int id)
         {
             int textureId = _toolboxState.TextureID;
 
