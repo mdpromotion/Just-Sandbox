@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 905358f3478ef76488b00ce4a4e734b1, type: 3}
-  m_Name: Rectagle
+  m_Name: Rectangle
   m_EditorClassIdentifier: 
   Id: 3
-  Name: Rectagle
+  Name: Rectangle
   Type: 0
-  PrefabAddress: Rectagle
+  PrefabAddress: Rectangle
   SpriteAddress: Objects
   DisplayOffset: {x: 0, y: 0, z: 0}
