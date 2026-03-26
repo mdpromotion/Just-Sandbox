@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class AudioSettings : IReadOnlyAudioSettings
 {
     public bool IsMusicEnabled { get; private set; }

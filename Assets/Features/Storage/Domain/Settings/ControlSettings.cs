@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class ControlSettings : IReadOnlyControlSettings
 {
     public int MouseSensitivity { get; private set; }

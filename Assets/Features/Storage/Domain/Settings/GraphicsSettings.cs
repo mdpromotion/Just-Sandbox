@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public enum GraphicsQuality
 {
     Low = 0,
