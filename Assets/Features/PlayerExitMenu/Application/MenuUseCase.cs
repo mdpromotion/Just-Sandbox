@@ -1,6 +1,6 @@
+using Cysharp.Threading.Tasks;
 using Feature.PlayerExitMenu.Domain;
 using Feature.Scene.Infrastructure;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Feature.PlayerExitMenu.Application
@@ -29,7 +29,7 @@ namespace Feature.PlayerExitMenu.Application
             _toggleMenu.ToggleMenu(state);
         }
 
-        public async Task LoadScene(string path)
+        public async UniTask LoadScene(string path)
         {
             var result = await _sceneManager.LoadSceneAsync(path);
             if (!result.IsSuccess)
