@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Feature.MainMenu.Presentation
+namespace Feature.MapsMenu.Presentation
 {
     public class View : MonoBehaviour, IView
     {

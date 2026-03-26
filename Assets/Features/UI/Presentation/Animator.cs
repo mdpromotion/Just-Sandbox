@@ -1,5 +1,5 @@
 using DG.Tweening;
-using Feature.MainMenu.Presentation;
+using Feature.MapsMenu.Presentation;
 using System;
 
 namespace Feature.UI.Presentation

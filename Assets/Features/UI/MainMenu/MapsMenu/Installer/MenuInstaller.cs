@@ -1,5 +1,5 @@
-using Feature.MainMenu.Application;
-using Feature.MainMenu.Presentation;
+using Feature.MapsMenu.Application;
+using Feature.MapsMenu.Presentation;
 using Feature.UI.Presentation;
 using Zenject;
 

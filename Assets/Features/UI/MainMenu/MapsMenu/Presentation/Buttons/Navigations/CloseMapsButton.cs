@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Feature.MainMenu.Presentation
+namespace Feature.MapsMenu.Presentation
 {
     [RequireComponent(typeof(Button))]
     public class CloseMapsButton : NavigationButton

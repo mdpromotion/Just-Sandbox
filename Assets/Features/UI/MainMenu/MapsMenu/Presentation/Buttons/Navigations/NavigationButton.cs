@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Feature.MainMenu.Presentation
+namespace Feature.MapsMenu.Presentation
 {
     public enum NavigationButtonType { OpenMaps, CloseMaps }
 
