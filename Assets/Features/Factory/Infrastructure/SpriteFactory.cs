@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,14 +15,14 @@ namespace Feature.Factory.Infrastructure
 
         private readonly Dictionary<string, Sprite> _spriteCache = new();
         private readonly Dictionary<string, AsyncOperationHandle<Sprite>> _handles = new();
-        private readonly Dictionary<string, Task<Sprite>> _loadingTasks = new();
+        private readonly Dictionary<string, UniTask<Sprite>> _loadingTasks = new();
 
         public SpriteFactory(ILogger logger)
         {
             _logger = logger;
         }
 
-        public async Task<Sprite> GetSprite(string address, string spriteName = null)
+        public async UniTask<Sprite> GetSprite(string address, string spriteName = null)
         {
             string key = string.IsNullOrEmpty(spriteName) ? address : $"{address}[{spriteName}]";
 
@@ -37,7 +38,7 @@ namespace Feature.Factory.Infrastructure
             return sprite;
         }
 
-        private async Task<Sprite> LoadSprite(string key)
+        private async UniTask<Sprite> LoadSprite(string key)
         {
             var handle = Addressables.LoadAssetAsync<Sprite>(key);
             await handle.Task;
