@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace Feature.Scene.Infrastructure
 {
     public interface ISceneManager
     {
-        Task<Result> LoadSceneAsync(string path);
+        UniTask<Result> LoadSceneAsync(string path);
     }
 }

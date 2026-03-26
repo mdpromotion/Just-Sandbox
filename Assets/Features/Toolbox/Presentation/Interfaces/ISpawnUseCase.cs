@@ -1,11 +1,10 @@
-using System.Threading.Tasks;
-using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 namespace Feature.Toolbox.Application
 {
     public interface ISpawnUseCase
     {
-        Task TrySpawn(int id);
+        UniTask TrySpawn(int id);
     }
 
 }

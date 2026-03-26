@@ -1,5 +1,6 @@
 using Feature.Agent.Application;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Feature.Toolbox.Application.UseCases
@@ -26,7 +27,7 @@ namespace Feature.Toolbox.Application.UseCases
             _logger = logger;
         }
 
-        public async Task TrySpawn(int id)
+        public async UniTask TrySpawn(int id)
         {
             var toolboxResult = await _toolboxSpawnUseCase.TrySpawnNPC(id);
             if (!toolboxResult.IsSuccess)

@@ -1,8 +1,8 @@
+using Cysharp.Threading.Tasks;
 using Feature.Factory.Infrastructure;
 using Feature.Toolbox.Data;
 using Feature.Toolbox.Infrastructure;
 using Shared.Service;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Feature.Toolbox.Application
@@ -37,7 +37,7 @@ namespace Feature.Toolbox.Application
             _textureConfig = textureConfig;
         }
 
-        public async Task<Result<ItemSpawnContext>> TrySpawnObject(int objectId, int textureId)
+        public async UniTask<Result<ItemSpawnContext>> TrySpawnObject(int objectId, int textureId)
         {
             var configResult = _itemConfig.GetItemConfig(objectId);
             if (!configResult.IsSuccess)
@@ -68,7 +68,7 @@ namespace Feature.Toolbox.Application
             return Result<ItemSpawnContext>.Success(new ItemSpawnContext(obj, material, config));
         }
 
-        private async Task<Result<Material>> LoadMaterial(int textureId)
+        private async UniTask<Result<Material>> LoadMaterial(int textureId)
         {
             var textureConfigResult = _textureConfig.GetMaterialAddress(textureId);
             if (!textureConfigResult.IsSuccess)

@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -7,7 +7,7 @@ namespace Feature.Factory.Infrastructure
 {
     public class GameObjectFactory : IGameObjectFactory
     {
-        public async Task<GameObject> SpawnObject(
+        public async UniTask<GameObject> SpawnObject(
             string prefabAddress,
             Vector3 position,
             Quaternion rotation,

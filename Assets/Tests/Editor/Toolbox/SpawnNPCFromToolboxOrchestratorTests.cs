@@ -9,11 +9,11 @@ using Shared.Data;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Tests.Toolbox
 {
-
     [TestFixture]
     public class SpawnNPCFromToolboxOrchestratorTests
     {
@@ -56,15 +56,22 @@ namespace Tests.Toolbox
             return mat;
         }
 
+        private Mock<IAgentProvider> CreateAgentProviderMock(int npcId)
+        {
+            var mock = new Mock<IAgentProvider>();
+            mock.SetupGet(p => p.Id).Returns(npcId);
+            return mock;
+        }
+
         [Test]
         public async Task TrySpawn_LogsWarning_WhenToolboxSpawnFails()
         {
             int npcId = 42;
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnNPC(npcId))
-                .ReturnsAsync(Result<AgentSpawnContext>.Failure("Toolbox error"));
+                .Returns(UniTask.FromResult(Result<AgentSpawnContext>.Failure("Toolbox error")));
 
-            await _sut.TrySpawn(npcId);
+            await _sut.TrySpawn(npcId).AsTask();
 
             _logger.Verify(l => l.LogWarning(
                 SpawnNPCFromToolboxOrchestrator.LogTag,
@@ -81,19 +88,20 @@ namespace Tests.Toolbox
 
             var gameObject = CreateGameObject();
             var material = CreateMaterial();
-            var config = Mock.Of<IAgentProvider>();
+            var configMock = CreateAgentProviderMock(npcId);
+            var config = configMock.Object;
 
             var spawnContext = new AgentSpawnContext(gameObject, config);
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnNPC(npcId))
-                .ReturnsAsync(Result<AgentSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<AgentSpawnContext>.Success(spawnContext)));
 
             _worldAgentUseCase
                 .Setup(w => w.SpawnNPC(config, gameObject))
                 .Returns(Result<AgentContext>.Failure("World spawn error"));
 
-            await _sut.TrySpawn(npcId);
+            await _sut.TrySpawn(npcId).AsTask();
 
             _logger.Verify(l => l.LogWarning(
                 SpawnNPCFromToolboxOrchestrator.LogTag,
@@ -108,19 +116,20 @@ namespace Tests.Toolbox
 
             var gameObject = CreateGameObject();
             var material = CreateMaterial();
-            var config = Mock.Of<IAgentProvider>();
+            var configMock = CreateAgentProviderMock(npcId);
+            var config = configMock.Object;
 
             var spawnContext = new AgentSpawnContext(gameObject, config);
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnNPC(npcId))
-                .ReturnsAsync(Result<AgentSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<AgentSpawnContext>.Success(spawnContext)));
 
             _worldAgentUseCase
                 .Setup(w => w.SpawnNPC(config, gameObject))
-                .Returns(Result<AgentContext>.Success(new AgentContext(gameObject, config.Id, It.IsAny<Guid>())));
+                .Returns(Result<AgentContext>.Success(new AgentContext(gameObject, config.Id, Guid.NewGuid())));
 
-            await _sut.TrySpawn(npcId);
+            await _sut.TrySpawn(npcId).AsTask();
 
             _worldAgentUseCase.Verify(w => w.SpawnNPC(config, gameObject), Times.Once);
             _logger.Verify(l => l.LogWarning(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
@@ -133,19 +142,20 @@ namespace Tests.Toolbox
 
             var gameObject = CreateGameObject();
             var material = CreateMaterial();
-            var config = Mock.Of<IAgentProvider>();
+            var configMock = CreateAgentProviderMock(npcId);
+            var config = configMock.Object;
 
             var spawnContext = new AgentSpawnContext(gameObject, config);
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnNPC(npcId))
-                .ReturnsAsync(Result<AgentSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<AgentSpawnContext>.Success(spawnContext)));
 
             _worldAgentUseCase
                 .Setup(w => w.SpawnNPC(config, gameObject))
-                .Returns(Result<AgentContext>.Success(new AgentContext(gameObject, config.Id, It.IsAny<Guid>())));
+                .Returns(Result<AgentContext>.Success(new AgentContext(gameObject, config.Id, Guid.NewGuid())));
 
-            Assert.DoesNotThrowAsync(async () => await _sut.TrySpawn(npcId));
+            Assert.DoesNotThrowAsync(async () => await _sut.TrySpawn(npcId).AsTask());
         }
 
         [TearDown]

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,14 +15,14 @@ namespace Feature.Factory.Infrastructure
 
         private readonly Dictionary<string, Material> _materialCache = new();
         private readonly Dictionary<string, AsyncOperationHandle<Material>> _handles = new();
-        private readonly Dictionary<string, Task<Material>> _loadingTasks = new();
+        private readonly Dictionary<string, UniTask<Material>> _loadingTasks = new();
 
         public MaterialFactory(ILogger logger)
         {
             _logger = logger;
         }
 
-        public async Task<Material> GetMaterial(string address)
+        public async UniTask<Material> GetMaterial(string address)
         {
             if (_materialCache.TryGetValue(address, out var cachedSprite))
                 return cachedSprite;
@@ -35,7 +36,7 @@ namespace Feature.Factory.Infrastructure
             return sprite;
         }
 
-        private async Task<Material> LoadMaterial(string key)
+        private async UniTask<Material> LoadMaterial(string key)
         {
             var handle = Addressables.LoadAssetAsync<Material>(key);
             await handle.Task;

@@ -1,5 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Feature.Scene.Infrastructure
 {
@@ -13,7 +13,7 @@ namespace Feature.Scene.Infrastructure
             _sceneLoadService = sceneLoadService;
         }
 
-        public async Task<Result> LoadSceneAsync(string path)
+        public async UniTask<Result> LoadSceneAsync(string path)
         {
             var loadResult = await _sceneLoadService.LoadScene(path);
             if (!loadResult.IsSuccess)
@@ -28,7 +28,7 @@ namespace Feature.Scene.Infrastructure
             return Result.Success();
         }
 
-        private async Task<Result> UnloadAllAsync()
+        private async UniTask<Result> UnloadAllAsync()
         {
             if (_loadedScenes.Count == 0)
                 return Result.Success();

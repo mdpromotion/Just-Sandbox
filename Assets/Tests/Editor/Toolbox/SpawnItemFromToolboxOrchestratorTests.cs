@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Feature.Combat.Application;
 using Feature.Inventory.Application;
 using Feature.Items.Application;
@@ -65,6 +66,20 @@ namespace Tests.Toolbox
             return mat;
         }
 
+        private Mock<IItemProvider> CreateItemProviderMock(int configId)
+        {
+            var mock = new Mock<IItemProvider>();
+            mock.SetupGet(p => p.Id).Returns(configId);
+            return mock;
+        }
+
+        private Mock<IWeaponProvider> CreateWeaponProviderMock(int configId)
+        {
+            var mock = new Mock<IWeaponProvider>();
+            mock.SetupGet(p => p.Id).Returns(configId);
+            return mock;
+        }
+
         [Test]
         public async Task TrySpawn_LogsWarning_WhenToolboxSpawnFails()
         {
@@ -73,9 +88,9 @@ namespace Tests.Toolbox
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnObject(itemId, 1))
-                .ReturnsAsync(Result<ItemSpawnContext>.Failure("Toolbox spawn failed"));
+                .Returns(UniTask.FromResult(Result<ItemSpawnContext>.Failure("Toolbox spawn failed")));
 
-            await _sut.TrySpawn(itemId);
+            await _sut.TrySpawn(itemId).AsTask();
 
             _logger.Verify(l => l.LogWarning(
                 SpawnItemFromToolboxOrchestrator.LogTag,
@@ -93,19 +108,20 @@ namespace Tests.Toolbox
 
             var go = CreateGameObject();
             var mat = CreateMaterial();
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfigMock = CreateItemProviderMock(itemId);
+            var itemConfig = itemConfigMock.Object;
 
             var spawnContext = new ItemSpawnContext(go, mat, itemConfig);
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnObject(itemId, 2))
-                .ReturnsAsync(Result<ItemSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<ItemSpawnContext>.Success(spawnContext)));
 
             _worldItemUseCase
                 .Setup(w => w.SpawnItem(itemConfig, go, mat))
                 .Returns(Result<ItemContext>.Failure("World spawn failed"));
 
-            await _sut.TrySpawn(itemId);
+            await _sut.TrySpawn(itemId).AsTask();
 
             _logger.Verify(l => l.LogError(
                 SpawnItemFromToolboxOrchestrator.LogTag,
@@ -121,19 +137,21 @@ namespace Tests.Toolbox
 
             var go = CreateGameObject();
             var mat = CreateMaterial();
-            var weaponConfig = Mock.Of<IWeaponProvider>();
+            var weaponMock = CreateWeaponProviderMock(itemId);
+            var weaponConfig = weaponMock.Object;
+
             var spawnContext = new ItemSpawnContext(go, mat, weaponConfig);
             var itemContext = new ItemContext(go, weaponConfig.Id, Guid.NewGuid());
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnObject(itemId, 3))
-                .ReturnsAsync(Result<ItemSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<ItemSpawnContext>.Success(spawnContext)));
 
             _worldItemUseCase
                 .Setup(w => w.SpawnItem(weaponConfig, go, mat))
                 .Returns(Result<ItemContext>.Success(itemContext));
 
-            await _sut.TrySpawn(itemId);
+            await _sut.TrySpawn(itemId).AsTask();
 
             _weaponItemUseCase.Verify(w => w.SpawnWeapon(weaponConfig, itemContext.WorldId), Times.Once);
         }
@@ -147,14 +165,16 @@ namespace Tests.Toolbox
 
             var go = CreateGameObject();
             var mat = CreateMaterial();
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfigMock = CreateItemProviderMock(itemId);
+            var itemConfig = itemConfigMock.Object;
+
             var spawnContext = new ItemSpawnContext(go, mat, itemConfig);
             var itemContext = new ItemContext(go, itemConfig.Id, Guid.NewGuid());
             var pickupResult = Result<int>.Success(1);
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnObject(itemId, 4))
-                .ReturnsAsync(Result<ItemSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<ItemSpawnContext>.Success(spawnContext)));
 
             _worldItemUseCase
                 .Setup(w => w.SpawnItem(itemConfig, go, mat))
@@ -164,7 +184,7 @@ namespace Tests.Toolbox
                 .Setup(i => i.TryPickupSpawnedItem(itemContext))
                 .Returns(pickupResult);
 
-            await _sut.TrySpawn(itemId);
+            await _sut.TrySpawn(itemId).AsTask();
 
             _inventoryPickupInput.Verify(i => i.TryPickupSpawnedItem(itemContext), Times.Once);
             _inventoryPickupInput.Verify(i => i.TrySelectItem(1, It.IsAny<bool>()), Times.Once);
@@ -178,14 +198,16 @@ namespace Tests.Toolbox
 
             var go = CreateGameObject();
             var mat = CreateMaterial();
-            var itemConfig = Mock.Of<IItemProvider>();
+            var itemConfigMock = CreateItemProviderMock(itemId);
+            var itemConfig = itemConfigMock.Object;
+
             var spawnContext = new ItemSpawnContext(go, mat, itemConfig);
             var itemContext = new ItemContext(go, itemConfig.Id, Guid.NewGuid());
             var pickupResult = Result<int>.Success(0);
 
             _toolboxSpawnUseCase
                 .Setup(t => t.TrySpawnObject(itemId, 5))
-                .ReturnsAsync(Result<ItemSpawnContext>.Success(spawnContext));
+                .Returns(UniTask.FromResult(Result<ItemSpawnContext>.Success(spawnContext)));
 
             _worldItemUseCase
                 .Setup(w => w.SpawnItem(itemConfig, go, mat))
@@ -195,7 +217,7 @@ namespace Tests.Toolbox
                 .Setup(i => i.TryPickupSpawnedItem(itemContext))
                 .Returns(pickupResult);
 
-            Assert.DoesNotThrowAsync(async () => await _sut.TrySpawn(itemId));
+            Assert.DoesNotThrowAsync(async () => await _sut.TrySpawn(itemId).AsTask());
         }
 
         [TearDown]
