@@ -1,12 +1,16 @@
-public class AudioSettings : IReadOnlyAudioSettings
+
+namespace Feature.Storage.Domain
 {
-    public bool IsMusicEnabled { get; private set; }
-    public AudioSettings(bool state = true)
+    public class AudioSettings : IReadOnlyAudioSettings
     {
-        ToggleMusic(state);
-    }
-    public void ToggleMusic(bool state)
-    {
-        IsMusicEnabled = state;
+        public bool IsMusicEnabled { get; private set; }
+        public AudioSettings(bool state = true)
+        {
+            ToggleMusic(state);
+        }
+        public void ToggleMusic(bool state)
+        {
+            IsMusicEnabled = state;
+        }
     }
 }

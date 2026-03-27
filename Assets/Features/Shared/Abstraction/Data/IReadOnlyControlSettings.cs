@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface IReadOnlyControlSettings
+namespace Feature.Storage.Domain
 {
-    int MouseSensitivity { get; }
+    public interface IReadOnlyControlSettings
+    {
+        int MouseSensitivity { get; }
+    }
 }

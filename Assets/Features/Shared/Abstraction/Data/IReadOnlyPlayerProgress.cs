@@ -1,4 +1,7 @@
-public interface IReadOnlyPlayerProgress
+namespace Feature.Storage.Domain
 {
-    bool IsTutorialCompleted { get; }
+    public interface IReadOnlyPlayerProgress
+    {
+        bool IsTutorialCompleted { get; }
+    }
 }

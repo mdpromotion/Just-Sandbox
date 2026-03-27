@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IReadOnlyAudioSettings
+namespace Feature.Storage.Domain
 {
-    bool IsMusicEnabled { get; }
+    public interface IReadOnlyAudioSettings
+    {
+        bool IsMusicEnabled { get; }
+    }
 }

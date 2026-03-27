@@ -1,12 +1,15 @@
-public class PlayerProgress : IReadOnlyPlayerProgress
+namespace Feature.Storage.Domain
 {
-    public bool IsTutorialCompleted { get; private set; }
-    public PlayerProgress(bool isTutorialCompleted = false)
+    public class PlayerProgress : IReadOnlyPlayerProgress
     {
-        IsTutorialCompleted = isTutorialCompleted;
-    }
-    public void CompleteTutorial()
-    {
-        IsTutorialCompleted = true;
+        public bool IsTutorialCompleted { get; private set; }
+        public PlayerProgress(bool isTutorialCompleted = false)
+        {
+            IsTutorialCompleted = isTutorialCompleted;
+        }
+        public void CompleteTutorial()
+        {
+            IsTutorialCompleted = true;
+        }
     }
 }

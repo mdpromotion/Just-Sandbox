@@ -1,15 +1,18 @@
-public class ControlSettings : IReadOnlyControlSettings
+namespace Feature.Storage.Domain
 {
-    public int MouseSensitivity { get; private set; }
-    public ControlSettings(int mouseSensitivity = 5)
+    public class ControlSettings : IReadOnlyControlSettings
     {
-        SetMouseSensitivity(mouseSensitivity);
-    }
-    public void SetMouseSensitivity(int sensitivity)
-    {
-        if (sensitivity < 0)
-            return;
+        public int MouseSensitivity { get; private set; }
+        public ControlSettings(int mouseSensitivity = 5)
+        {
+            SetMouseSensitivity(mouseSensitivity);
+        }
+        public void SetMouseSensitivity(int sensitivity)
+        {
+            if (sensitivity < 0)
+                return;
 
-        MouseSensitivity = sensitivity;
+            MouseSensitivity = sensitivity;
+        }
     }
 }
