@@ -1,3 +1,4 @@
+using Feature.Storage.Domain;
 using System;
 using System.Collections.Generic;
 
@@ -6,7 +7,6 @@ namespace Feature.Storage.Infrastructure
     public class StorageDataService : IStorageDataService
     {
         private readonly IPlayerStorage _storage;
-        private readonly IReadOnlyGameState _gameStates;
 
         private readonly PlayerEconomy _playerEconomy;
         private readonly PurchaseItem _purchaseItem;
@@ -15,12 +15,11 @@ namespace Feature.Storage.Infrastructure
         private readonly AudioSettings _audioSettings;
         private readonly PlayerProgress _playerProgress;
 
-        public StorageDataService(IPlayerStorage storage, IReadOnlyGameState gameStates, PlayerEconomy playerEconomy,
+        public StorageDataService(IPlayerStorage storage, PlayerEconomy playerEconomy,
             ControlSettings controlSettings, GraphicsSettings graphicsSettings, AudioSettings audioSettings,
             PlayerProgress playerProgress)
         {
             _storage = storage;
-            _gameStates = gameStates;
             _playerEconomy = playerEconomy;
             _controlSettings = controlSettings;
             _graphicsSettings = graphicsSettings;
@@ -29,49 +28,13 @@ namespace Feature.Storage.Infrastructure
         }
 
         private readonly Dictionary<PurchaseItemData, string> _purchaseKeys = new()
-    {
-        { PurchaseItemData.Rifle, "isRiflePurchased" },
-        { PurchaseItemData.M4, "isM4Purchased" },
-        { PurchaseItemData.Turret, "isTurretPurchased" },
-        { PurchaseItemData.Set, "isSetPurchased" },
-        { PurchaseItemData.CheatMenu, "isCheatMenuPurchased" }
-    };
-
-        public void ModifyMoney(int amount)
         {
-            _playerEconomy.ModifyMoney(amount);
-        }
-
-        public void SetMoney(int amount)
-        {
-            _playerEconomy.SetMoney(amount);
-        }
-
-        public void SetPurchase(PurchaseItemData item, bool value)
-        {
-            _purchaseItem.SetPurchase(item, value);
-        }
-
-        public void CompleteTutorial()
-        {
-            _playerProgress.CompleteTutorial();
-        }
-
-        public void SetMusic(bool value)
-        {
-            _audioSettings.ToggleMusic(value);
-        }
-
-        public void SetGraphicsQuality(int quality)
-        {
-            GraphicsQuality graphicsQuality = ConvertToGraphics(quality);
-            _graphicsSettings.SetGraphicsQuality(graphicsQuality);
-        }
-
-        public void SetMouseSensitivity(int value)
-        {
-            _controlSettings.SetMouseSensitivity(value);
-        }
+            { PurchaseItemData.Rifle, "isRiflePurchased" },
+            { PurchaseItemData.M4, "isM4Purchased" },
+            { PurchaseItemData.Turret, "isTurretPurchased" },
+            { PurchaseItemData.Set, "isSetPurchased" },
+            { PurchaseItemData.CheatMenu, "isCheatMenuPurchased" }
+        };
 
         /// <summary>
         /// Loads user settings and game progress from persistent storage and applies them to the current session.
@@ -85,6 +48,7 @@ namespace Feature.Storage.Infrastructure
             SetMoney(_storage.GetInt("money"));
             SetMouseSensitivity(_storage.GetInt("mouseSensitivity"));
             SetGraphicsQuality(_storage.GetInt("graphicsQuality"));
+            SetMusic(_storage.GetBool("isMusicOn"));
 
             if (_storage.GetBool("isTutorialCompleted"))
                 CompleteTutorial();
@@ -126,6 +90,32 @@ namespace Feature.Storage.Infrastructure
             }
 
             _storage.Sync(cloudSave);
+        }
+
+        private void SetMoney(int amount)
+        {
+            _playerEconomy.SetMoney(amount);
+        }
+
+        private void CompleteTutorial()
+        {
+            _playerProgress.CompleteTutorial();
+        }
+
+        private void SetMusic(bool value)
+        {
+            _audioSettings.ToggleMusic(value);
+        }
+
+        private void SetGraphicsQuality(int quality)
+        {
+            GraphicsQuality graphicsQuality = ConvertToGraphics(quality);
+            _graphicsSettings.SetGraphicsQuality(graphicsQuality);
+        }
+
+        private void SetMouseSensitivity(int value)
+        {
+            _controlSettings.SetMouseSensitivity(value);
         }
 
         private GraphicsQuality ConvertToGraphics(int index)
