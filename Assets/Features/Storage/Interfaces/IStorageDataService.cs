@@ -1,13 +1,8 @@
-public interface IStorageDataService
+namespace Feature.Storage.Infrastructure
 {
-    void ModifyMoney(int amount);
-    void SetMoney(int amount);
-    void SetPurchase(PurchaseItemData item, bool value);
-    void CompleteTutorial();
-    void SetMusic(bool value);
-    void SetGraphicsQuality(int quality);
-    void SetMouseSensitivity(int value);
-
-    void Load();
-    void Save(bool isCloudSave);
+    public interface IStorageDataService
+    {
+        void Load();
+        void Save(bool isCloudSave);
+    }
 }
