@@ -1,5 +1,8 @@
-public interface IStorageDataService
+namespace Feature.Storage.Infrastructure
 {
-    void Load();
-    void Save(bool isCloudSave);
+    public interface IStorageDataService
+    {
+        void Load();
+        void Save(bool isCloudSave);
+    }
 }
