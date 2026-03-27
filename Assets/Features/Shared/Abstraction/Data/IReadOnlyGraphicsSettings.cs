@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface IReadOnlyGraphicsSettings 
+namespace Feature.Storage.Domain
 {
-    GraphicsQuality GraphicsQuality { get; }
+    public interface IReadOnlyGraphicsSettings
+    {
+        GraphicsQuality GraphicsQuality { get; }
+    }
 }

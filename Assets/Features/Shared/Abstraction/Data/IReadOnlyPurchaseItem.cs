@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface IReadOnlyPurchaseItem
+namespace Feature.Storage.Domain
 {
-    bool IsPurchased(PurchaseItemData item);
+    public interface IReadOnlyPurchaseItem
+    {
+        bool IsPurchased(PurchaseItemData item);
+    }
 }

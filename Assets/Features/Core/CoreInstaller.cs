@@ -1,6 +1,7 @@
 using Core.Data;
 using Core.Providers;
 using Core.Service;
+using Feature.Storage.Domain;
 using Shared.Providers;
 using Shared.Service;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class CoreInstaller : Installer
     {
         Container.BindInterfacesTo<GameState>().AsSingle();
         Container.BindInterfacesAndSelfTo<ControlSettings>().AsSingle();
-        Container.BindInterfacesAndSelfTo<AudioSettings>().AsSingle();
+        Container.BindInterfacesAndSelfTo<Feature.Storage.Domain.AudioSettings>().AsSingle();
         Container.BindInterfacesAndSelfTo<GraphicsSettings>().AsSingle();
         Container.BindInterfacesAndSelfTo<PlayerProgress>().AsSingle();
         Container.BindInterfacesAndSelfTo<PlayerEconomy>().AsSingle();
