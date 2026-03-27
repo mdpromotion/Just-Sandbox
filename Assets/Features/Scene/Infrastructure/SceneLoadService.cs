@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 namespace Feature.Scene.Infrastructure
@@ -28,18 +27,6 @@ namespace Feature.Scene.Infrastructure
                 return Result<LoadedSceneData>.Failure($"Failed to load scene at path: {scenePath}");
 
             return Result<LoadedSceneData>.Success(new LoadedSceneData(handle.Result));
-        }
-
-        public async UniTask<Result> UnloadSceneAsync(SceneInstance scene)
-        {
-            var handle = Addressables.UnloadSceneAsync(scene);
-
-            await handle.Task;
-
-            if (handle.Status != AsyncOperationStatus.Succeeded)
-                return Result.Failure($"Failed to unload scene: {scene.Scene.name}");
-
-            return Result.Success();
         }
     }
 }
