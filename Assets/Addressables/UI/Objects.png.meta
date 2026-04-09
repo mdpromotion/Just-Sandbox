@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rectagle
+      name: Rectangle
       rect:
         serializedVersion: 2
         x: 44
@@ -281,7 +281,7 @@ TextureImporter:
       Circus: -684310423
       Cube: -931934415
       Floor: 2019916118
-      Rectagle: 485147714
+      Rectangle: 485147714
       Turret: -1685674387
       Wall: -794540424
   mipmapLimitGroupName: 
