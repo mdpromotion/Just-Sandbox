@@ -1,5 +1,5 @@
 using Core.Providers;
-using Feature.UI.Presentation;
+using Feature.UI.Utils;
 using Zenject;
 
 public class UIInstaller : Installer

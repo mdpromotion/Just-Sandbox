@@ -1,8 +1,7 @@
 using DG.Tweening;
-using Feature.MapsMenu.Presentation;
 using System;
 
-namespace Feature.UI.Presentation
+namespace Feature.UI.Utils
 {
     /// <summary>
     /// Provides functionality to animate a numeric value from a starting point to an ending point over a specified

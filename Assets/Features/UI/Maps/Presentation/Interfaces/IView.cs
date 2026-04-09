@@ -1,7 +1,7 @@
 using Feature.Scene.Infrastructure;
 using System;
 
-namespace Feature.MapsMenu.Presentation
+namespace Feature.UI.Maps.Presentation
 {
     public interface IView
     {

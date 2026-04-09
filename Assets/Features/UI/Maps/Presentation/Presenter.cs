@@ -1,12 +1,11 @@
-using Feature.MapsMenu.Application;
-using Feature.MapsMenu.Data;
 using Feature.Scene.Infrastructure;
-using Feature.UI.Presentation;
+using Feature.UI.Maps.Data;
+using Feature.UI.Utils;
 using System;
 using System.Threading.Tasks;
 using Zenject;
 
-namespace Feature.MapsMenu.Presentation
+namespace Feature.UI.Maps.Presentation
 {
     public class Presenter : IInitializable, IDisposable
     {

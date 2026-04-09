@@ -2,7 +2,7 @@ using Feature.Scene.Infrastructure;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Feature.MapsMenu.Presentation
+namespace Feature.UI.Maps.Presentation
 {
     [RequireComponent(typeof(Button))]
     public class LoadSceneButton : MonoBehaviour

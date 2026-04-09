@@ -1,7 +1,7 @@
-using Feature.MapsMenu.Data;
+using Feature.UI.Maps.Data;
 using System.Threading.Tasks;
 
-namespace Feature.MapsMenu.Application
+namespace Feature.UI.Maps.Presentation
 {
     public interface IStartGameUseCase
     {

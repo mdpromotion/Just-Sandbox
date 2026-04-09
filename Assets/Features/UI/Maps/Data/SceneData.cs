@@ -1,4 +1,4 @@
-namespace Feature.MapsMenu.Data
+namespace Feature.UI.Maps.Data
 {
     public readonly struct SceneData
     {

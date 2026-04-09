@@ -1,6 +1,6 @@
 using Feature.PlayerExitMenu.Application;
 using Feature.PlayerExitMenu.Domain;
-using Feature.UI.Presentation;
+using Feature.UI.Utils;
 using System;
 using Zenject;
 

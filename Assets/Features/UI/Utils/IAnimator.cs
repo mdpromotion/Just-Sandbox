@@ -1,6 +1,4 @@
-using DG.Tweening;
-
-namespace Feature.UI.Presentation
+namespace Feature.UI.Utils
 {
     public interface IAnimator
     {
