@@ -25,7 +25,7 @@ namespace SimpleInputNamespace
 			button.StopTracking();
 		}
 
-        public void OnPointerDown( PointerEventData eventData )
+		public void OnPointerDown( PointerEventData eventData )
 		{
 			button.value = true;
 		}
