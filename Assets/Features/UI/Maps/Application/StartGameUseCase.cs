@@ -1,7 +1,7 @@
 using Feature.UI.Maps.Presentation;
 using Feature.Scene.Infrastructure;
-using System.Threading.Tasks;
 using Feature.UI.Maps.Data;
+using Cysharp.Threading.Tasks;
 
 namespace Feature.UI.Maps.Application
 {
@@ -14,7 +14,7 @@ namespace Feature.UI.Maps.Application
             _sceneManager = sceneManager;
         }
 
-        public async Task<Result> StartGame(SceneData data)
+        public async UniTask<Result> StartGame(SceneData data)
         {
             if (string.IsNullOrWhiteSpace(data.Path))
                 return Result.Failure("Scene path is empty");
