@@ -1,3 +1,4 @@
+using Feature.UI.Shared;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ namespace Feature.UI.Maps.Presentation
         private void Awake()
         {
             _button = GetComponent<Button>();
-            NavigationButtonType = NavigationButtonType.OpenMaps;
+            NavigationButtonType = NavigationButtonType.Open;
             _button.onClick.AddListener(OnOpenMapsButtonClicked);
         }
 

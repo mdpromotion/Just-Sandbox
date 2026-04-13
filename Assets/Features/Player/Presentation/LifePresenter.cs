@@ -1,5 +1,5 @@
 using Feature.Player.Domain;
-using Feature.UI.Utils;
+using Feature.UI.Shared;
 using Shared.Data;
 using System;
 using Zenject;

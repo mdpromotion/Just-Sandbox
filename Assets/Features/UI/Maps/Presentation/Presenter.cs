@@ -1,6 +1,6 @@
 using Feature.Scene.Infrastructure;
 using Feature.UI.Maps.Data;
-using Feature.UI.Utils;
+using Feature.UI.Shared;
 using System;
 using System.Threading.Tasks;
 using Zenject;
@@ -32,12 +32,12 @@ namespace Feature.UI.Maps.Presentation
         {
             switch (type) 
             {
-                case NavigationButtonType.OpenMaps:
+                case NavigationButtonType.Open:
                     _isMapsMenuActive = true;
                     ToggleButtonsPanel(!_isMapsMenuActive);
                     ToggleMapsPanel(_isMapsMenuActive);
                     break;
-                case NavigationButtonType.CloseMaps:
+                case NavigationButtonType.Close:
                     _isMapsMenuActive = false;
                     ToggleButtonsPanel(!_isMapsMenuActive);
                     ToggleMapsPanel(_isMapsMenuActive);

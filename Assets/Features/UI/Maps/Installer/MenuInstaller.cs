@@ -1,6 +1,6 @@
 using Feature.UI.Maps.Application;
 using Feature.UI.Maps.Presentation;
-using Feature.UI.Utils;
+using Feature.UI.Shared;
 using Zenject;
 
 public class MenuInstaller : MonoInstaller

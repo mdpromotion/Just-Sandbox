@@ -1,4 +1,5 @@
 using Feature.Scene.Infrastructure;
+using Feature.UI.Shared;
 using System;
 
 namespace Feature.UI.Maps.Presentation

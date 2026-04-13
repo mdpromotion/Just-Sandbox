@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Feature.UI.Maps.Presentation
+namespace Feature.UI.Shared
 {
-    public enum NavigationButtonType { OpenMaps, CloseMaps }
+    public enum NavigationButtonType { Open, Close }
 
     public abstract class NavigationButton : MonoBehaviour
     {
