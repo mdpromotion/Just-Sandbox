@@ -12,14 +12,11 @@ namespace Feature.UI.Maps.Presentation
         private void Awake()
         {
             _button = GetComponent<Button>();
-            NavigationButtonType = NavigationButtonType.Close;
             _button.onClick.AddListener(OnCloseMapsButtonClicked);
         }
 
         private void OnCloseMapsButtonClicked()
         {
-            print("CloseMapsButton clicked");
-            print("Invoking OnNavigationButtonClicked event with type: " + NavigationButtonType);
             InvokeClicked();
         }
     }

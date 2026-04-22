@@ -12,7 +12,6 @@ namespace Feature.UI.Maps.Presentation
         private void Awake()
         {
             _button = GetComponent<Button>();
-            NavigationButtonType = NavigationButtonType.Open;
             _button.onClick.AddListener(OnOpenMapsButtonClicked);
         }
 

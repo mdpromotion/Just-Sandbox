@@ -1,8 +1,8 @@
+using Cysharp.Threading.Tasks;
 using Feature.Scene.Infrastructure;
 using Feature.UI.Maps.Data;
 using Feature.UI.Shared;
 using System;
-using System.Threading.Tasks;
 using Zenject;
 
 namespace Feature.UI.Maps.Presentation
@@ -11,15 +11,13 @@ namespace Feature.UI.Maps.Presentation
     {
         private readonly IView _view;
         private readonly IAnimator _animator;
-        private readonly IStartGameUseCase _startGameUseCase;
 
         private bool _isMapsMenuActive = false;
 
-        public Presenter(IView view, IAnimator animator, IStartGameUseCase startGameUseCase)
+        public Presenter(IView view, IAnimator animator)
         {
             _view = view;
             _animator = animator;
-            _startGameUseCase = startGameUseCase;
         }
 
         public void Initialize() 
@@ -50,7 +48,7 @@ namespace Feature.UI.Maps.Presentation
             _ = HandleSceneButtonClickedAsync(scene);
         }
 
-        private async Task HandleSceneButtonClickedAsync(SceneObject scene)
+        private async UniTask HandleSceneButtonClickedAsync(SceneObject scene)
         {
             var sceneData = new SceneData(scene.SceneName, scene.ScenePath);
 
