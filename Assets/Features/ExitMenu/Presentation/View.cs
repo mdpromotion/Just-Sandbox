@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Feature.PlayerExitMenu.Presentation
+namespace Feature.ExitMenu.Presentation
 {
     public class View : MonoBehaviour, IView
     {

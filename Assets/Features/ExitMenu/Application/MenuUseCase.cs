@@ -1,9 +1,9 @@
 using Cysharp.Threading.Tasks;
-using Feature.PlayerExitMenu.Domain;
+using Feature.ExitMenu.Domain;
 using Feature.Scene.Infrastructure;
 using UnityEngine;
 
-namespace Feature.PlayerExitMenu.Application
+namespace Feature.ExitMenu.Application
 {
     public class MenuUseCase : IMenuUseCase
     {
