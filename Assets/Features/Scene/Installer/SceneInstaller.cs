@@ -1,11 +1,16 @@
+using Feature.Scene.Application;
 using Feature.Scene.Infrastructure;
 using Zenject;
 
-public class SceneInstaller : MonoInstaller
+namespace Feature.Scene.Installer
 {
-    public override void InstallBindings()
+    public class SceneInstaller : MonoInstaller
     {
-        Container.Bind<ISceneManager>().To<SceneManager>().AsSingle();
-        Container.Bind<SceneLoadService>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<ISceneManager>().To<SceneManager>().AsSingle();
+            Container.Bind<SceneLoadService>().AsSingle();
+            Container.Bind<ILoadSceneUseCase>().To<LoadSceneUseCase>().AsSingle();
+        }
     }
 }
