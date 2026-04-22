@@ -1,10 +1,10 @@
-using Feature.PlayerExitMenu.Application;
-using Feature.PlayerExitMenu.Domain;
+using Feature.ExitMenu.Application;
+using Feature.ExitMenu.Domain;
 using Feature.UI.Utils;
 using System;
 using Zenject;
 
-namespace Feature.PlayerExitMenu.Presentation
+namespace Feature.ExitMenu.Presentation
 {
     public class Presenter : IInitializable, IDisposable
     {
