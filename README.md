@@ -112,4 +112,4 @@
 ## 🎮 Ссылки
 1. **Игра:** [yandex.ru/games/app/460639](https://yandex.ru/games/app/460639)
 2. **MVP (исходный код):** [s3.eponesh.com/games/22567/](https://s3.eponesh.com/games/22567/)
-3. **Страница проекта:** [mrpromotion.me/just-sandbox](https://mrpromotion.me/just-sandbox)
+3. **Страница проекта:** [mrpromotion.me/just-sandbox](https://mrpromotion.me/ru/just-sandbox)
