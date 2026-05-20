@@ -1,128 +1,114 @@
 # Just Sandbox
 
-**Just Sandbox** — динамичная 3D-песочница, где всё решает твоя реакция и умение управлять хаосом. Убивай врагов, зарабатывай деньги и трать их на оружие, улучшения и снаряжение в магазине. Играй так, как хочешь: экспериментируй с арсеналом, проверяй свои идеи в бою и выживай в мире, который не прощает ошибок.
+[English Version](#english-version) | [Русская версия](#русская-версия)
+
+---
+
+<a name="english-version"></a>
+# 🇬🇧 English Version
+
+**Just Sandbox** is a dynamic 3D sandbox where reflexes and chaos management are the keys to success. Eliminate enemies, earn money, and spend it on weapons, upgrades, and gear in the shop. Play your way: experiment with your arsenal, test ideas in combat, and survive in a world that shows no mercy.
+
+## 🚀 Core Technologies & Approaches
+- **Clean Architecture + MVP** — All features are isolated, testable, and extensible.
+- **Feature-first Structure** — Every feature is autonomous (Application, Domain, Infrastructure, Installer, Presentation, Data).
+- **SOLID Principles** — Architecture built for change and easy scaling.
+
+## 🧠 Architecture & Patterns
+- **Dependency Injection (Zenject)** — Managing dependencies and decoupling components.
+- **MVP (Model-View-Presenter)** — Strict separation of logic and UI.
+- **Factory / Abstract Factory** — Creating objects without tight coupling.
+- **State Machine** — Managing game and feature states.
+
+## ⚙️ Tech Stack
+- **Unity Addressables** — Dynamic resource loading and management.
+- **Async/Await (UniTask / Task)** — Non-blocking logic, eliminating Coroutines.
+- **GamePush SDK** — Cloud saves, monetization, and rewarded ads.
+- **ScriptableObjects** — Data-driven configuration approach.
+
+## 🧪 Testing & Quality Assurance
+- **NUnit** — Unit testing for core business logic.
+- **Moq** — Mocking dependencies for isolated tests.
+- **Unity Test Framework** — Integration and playmode testing.
+
+## 📊 Performance & Production
+- **Unity Profiler** — Deep performance analysis.
+- **Memory Management** — Strict control over allocations and GC.
+- **Production-Ready Build** — Optimized for stability and speed.
+- **Metrics & Logging** — Real-time application state tracking.
+
+---
+
+## 🏗 Project Structure (Feature-first)
+`📦 Assets / Features / FeatureName`
+- `Application` — Use-cases & core logic
+- `Domain` — The "Source of Truth"
+- `Infrastructure` — Framework-dependent implementations
+- `Installer` — Zenject DI bindings
+- `Presentation` — UI layer
+- `Data` — Configs & DTOs
+
+## ✨ Highlights
+- **Shop & Toolbox:** Dynamic entity spawning controlled by async Addressables.
+- **Combat System:** Layered architecture (Input → Business Rules → Domain Validation → Execution).
+- **Entity System:** Unified `IEntity` & `ITarget` interfaces for NPCs and players.
+- **AI System:** FSM-based, modular behavior controllers for high flexibility.
+
+## 🎮 Play & Source
+1. **Full Game:** [yandex.ru/games/app/460639](https://yandex.ru/games/app/460639)
+2. **MVP Source Code:** [s3.eponesh.com/games/22567/](https://s3.eponesh.com/games/22567/)
+
+---
+
+<a name="русская-версия"></a>
+# 🇷🇺 Русская версия
+
+**Just Sandbox** — динамичная 3D-песочница, где всё решает твоя реакция и умение управлять хаосом. Убивай врагов, зарабатывай деньги и трать их в магазине. Играй так, как хочешь: экспериментируй с арсеналом и выживай в мире, который не прощает ошибок.
 
 ## 🚀 Основные технологии и подходы
-
-- **Clean Architecture + MVP (Presentation Layer)** — все фичи изолированы, легко тестируются и расширяются.  
-- **Feature-first структура** — каждая фича полностью автономна: Application, Domain, Infrastructure, Installer, Presentation, Data.  
-- **SOLID принципы** — архитектура устойчива к изменениям и легко масштабируется.  
-
----
+- **Clean Architecture + MVP** — все фичи изолированы и легко тестируются.
+- **Feature-first структура** — каждая фича полностью автономна.
+- **SOLID принципы** — архитектура, устойчивая к изменениям.
 
 ## 🧠 Архитектура и паттерны
-
-- **Dependency Injection (Zenject)** — управление зависимостями и слабая связанность компонентов.  
-- **MVP (Model-View-Presenter)** — разделение логики и UI.  
-- **Factory / Abstract Factory** — создание объектов без жесткой привязки к реализации.  
-- **State Machine** — управление состояниями игры и фич.  
-
----
+- **Dependency Injection (Zenject)** — управление зависимостями и слабая связанность.
+- **MVP (Model-View-Presenter)** — разделение логики и UI.
+- **Factory / Abstract Factory** — создание объектов без жесткой привязки.
+- **State Machine** — управление состояниями игры.
 
 ## ⚙️ Технологии
-
-- **Unity Addressables** — динамическая загрузка и управление ресурсами.  
-- **Async/Await (UniTask / Task)** — асинхронная логика без корутин.  
-- **GamePush SDK** — облачные сохранения, донат, реклама (rewarded ads).  
-- **ScriptableObjects** — конфигурация данных и data-driven подход.  
-
----
+- **Unity Addressables** — динамическая загрузка ресурсов.
+- **Async/Await (UniTask / Task)** — асинхронная логика без корутин.
+- **GamePush SDK** — облачные сохранения, монетизация.
+- **ScriptableObjects** — data-driven подход.
 
 ## 🧪 Тестирование
+- **NUnit** — юнит-тестирование бизнес-логики.
+- **Moq** — мокирование зависимостей.
+- **Unity Test Framework** — интеграционные и playmode тесты.
 
-- **NUnit** — unit-тестирование бизнес-логики.  
-- **Moq** — мокирование зависимостей для изолированных тестов.  
-- **Unity Test Framework (Unity Test Runner)** — интеграционные и playmode тесты.  
-
----
-
-## 📊 Оптимизация и продакшн
-
-- **Профилирование (Unity Profiler)** — анализ производительности.  
-- **Memory management best practices** — контроль аллокаций и GC.  
-- **Production-ready билд** — стабильная сборка с учетом оптимизаций.  
-- **Метррики и логирование** — отслеживание состояния приложения.  
-
----
-
-## 🔧 Дополнительно
-
-- **Code Style & Guidelines** — единый стиль кода.  
-- **Modular architecture** — удобное добавление новых фич.  
-- **Scalability-first подход** — проект готов к росту.  
+## 📊 Оптимизация
+- **Unity Profiler** — анализ производительности.
+- **Memory Management** — контроль аллокаций и GC.
+- **Production-ready** — стабильная сборка с учетом оптимизаций.
 
 ---
 
 ## 🏗 Структура проекта (Feature-first)
-Каждая фича организована так: <br> 
-📦 Assets / Features / FeatureName <br>
-├── 📁 Application # Юз-кейсы, чистая логика <br> 
-├── 📁 Domain # Центр правды, корень feature <br>
-├── 📁 Infrastructure # Реализации, зависящие от фреймворка <br>
-├── 📁 Installer # DI Installer/MonoInstaller <br>
-├── 📁 Presentation # UI слой <br> 
-└── 📁 Data # Конфиги, DTO (опционально) <br>
+`📦 Assets / Features / FeatureName`
+- `Application` — юз-кейсы, чистая логика
+- `Domain` — корень фичи
+- `Infrastructure` — реализации, зависящие от фреймворка
+- `Installer` — DI Installer
+- `Presentation` — UI слой
+- `Data` — конфиги, DTO
 
----
-## ✨ Ключевые фичи (Highlights)
+## ✨ Ключевые фичи
+- **Магазин и Toolbox:** асинхронный спавн через Addressables.
+- **Система стрельбы:** многослойная архитектура (Input → Rules → Domain → Execution).
+- **Игрок и NPC:** единые интерфейсы `IEntity` и `ITarget` для расширяемости.
+- **AI:** FSM-система с набором независимых контроллеров.
 
-Проект демонстрирует масштабируемую архитектуру и гибкую систему взаимодействия игровых сущностей.
-
-🛒 **Магазин и контент**  
-Игрок может приобретать оружие, различные предметы, а также доступ к расширенному чит-меню. Весь недоступный на старте контент управляется через систему Toolbox.
-
-🧰 **Toolbox и спавн**  
-Toolbox отвечает за создание игровых сущностей: оружия и NPC с заданными ролями (враждебные, нейтральные, дружественные). Спавн объектов в мире реализован асинхронно через Addressables.
-
-🔫 **Система стрельбы**  
-Обработка выстрела проходит через несколько слоёв:
-- Infrastructure получает ввод игрока  
-- Application проверяет бизнес-правила (например, cooldown)  
-- Домен валидирует возможность выстрела (наличие патронов)  
-
-При успешной проверке:
-- генерируется событие для анимации (Presentation слой)  
-- отдельный use-case обрабатывает сам выстрел (raycast и нанесение урона через ITarget)
-
-🧍 **Игрок и NPC**  
-Игроки и NPC реализованы как единые сущности (Entity) с общими интерфейсами:
-- IEntity — базовые данные  
-- ITarget — возможность получения урона  
-
-Это упрощает расширение системы, включая потенциальный мультиплеер.
-
-🤖 **AI система**  
-Agent AI построен на FSM и наборе независимых контроллеров (поведение, навигация, жизненный цикл, атака). Контроллеры слабо связаны между собой, что повышает гибкость и упрощает поддержку.
-
----
-
-## 📊 Технические данные
-
-- Средний FPS: 60+ на стандартных сценах
-- Время загрузки уровня: <1 сек через Addressables
-- Память: оптимизировано, минимальные утечки
-- Юнит-тесты покрывают ключевую логику (Application + Domain)
-- Версия Unity 6000.0.67f1
-
----
-
-## 🎮 Как запустить
-
-1. **Полная версия игры**  
-   - Ссылка: [yandex.ru/games/app/460639](https://yandex.ru/games/app/460639)  
-   - В этой версии реализованы все уникальные системы и фичи проекта.
-
-2. **MVP (код репозитория)**  
-   - Билд репозитория с минимально рабочей версией: [s3.eponesh.com/games/22567/](https://s3.eponesh.com/games/22567/)
-   - Основные фичи сохранены, структура оптимизирована, количество уникальных систем сокращено.
-   - Это именно тот билд, который соответствует исходному коду в репозитории. Большой масштаб, 180+ классов.
-
----
-
-## 🖼 Screenshots / Videos
-
-[Full video](https://youtu.be/dubRnizWODg)
-
-![Logo](https://i.imgur.com/bsq0hpl.png)
-![Logo1](https://i.imgur.com/7GaCMCp.png)
----
+## 🎮 Ссылки
+1. **Игра:** [yandex.ru/games/app/460639](https://yandex.ru/games/app/460639)
+2. **MVP (исходный код):** [s3.eponesh.com/games/22567/](https://s3.eponesh.com/games/22567/)
