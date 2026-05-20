@@ -57,7 +57,7 @@
 ## 🎮 Play & Source
 1. **Full Game:** [yandex.ru/games/app/460639](https://yandex.ru/games/app/460639)
 2. **MVP Source Code:** [s3.eponesh.com/games/22567/](https://s3.eponesh.com/games/22567/)
-
+3. **Project Page:** [mrpromotion.me/just-sandbox](https://mrpromotion.me/just-sandbox)
 ---
 
 <a name="русская-версия"></a>
@@ -112,3 +112,4 @@
 ## 🎮 Ссылки
 1. **Игра:** [yandex.ru/games/app/460639](https://yandex.ru/games/app/460639)
 2. **MVP (исходный код):** [s3.eponesh.com/games/22567/](https://s3.eponesh.com/games/22567/)
+3. **Страница проекта:** [mrpromotion.me/just-sandbox](https://mrpromotion.me/just-sandbox)
