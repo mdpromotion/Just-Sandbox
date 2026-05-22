@@ -11,18 +11,22 @@ namespace Core.PlayerInput
         public event Action DropPressed;
         public event Action ToolPressed;
 
-        private readonly int _slotCount;
+        private readonly KeyCode[] _keys;
 
         public DesktopInventoryInput(int slotCount = 8)
         {
-            _slotCount = slotCount;
+            _keys = new KeyCode[slotCount];
+            for (int i = 0; i < slotCount; i++)
+            {
+                _keys[i] = (KeyCode)((int)KeyCode.Alpha0 + i);
+            }
         }
 
         public void Tick()
         {
-            for (int i = 1; i < _slotCount; i++)
+            for (int i = 1; i < _keys.Length; i++)
             {
-                if (Input.GetKeyDown(i.ToString()))
+                if (Input.GetKeyDown(_keys[i]))
                 {
                     SlotPressed?.Invoke(i);
                 }
