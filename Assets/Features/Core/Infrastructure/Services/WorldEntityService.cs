@@ -12,17 +12,26 @@ namespace Core.Service
     public class WorldEntityService : IWorldEntityService
     {
         private readonly Dictionary<IEntity, GameObject> _map = new();
+        private readonly Dictionary<Guid, IEntity> _guidToEntity = new();
+        private readonly Collider[] _physicsBuffer = new Collider[512];
 
         public bool TryGetPosition(Guid guid, out Position3? position)
         {
-            var RawPosition = _map.FirstOrDefault(kvp => kvp.Key.Id == guid).Value?.transform.position;
-            position = RawPosition.HasValue ? Mapper.ToPosition3(RawPosition.Value) : null;
-            return position != null;
-        }
+            position = null;
 
-        public List<EntityTransformData> GetEntitiesAround(Position3 position, float maxDistance)
+            if (_guidToEntity.TryGetValue(guid, out var entity))
+            {
+                if (_map.TryGetValue(entity, out var go) && go != null)
+                {
+                    position = Mapper.ToPosition3(go.transform.position);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public void GetEntitiesAround(Position3 position, float maxDistance, List<EntityTransformData> resultsBuffer)
         {
-            var result = new List<EntityTransformData>(_map.Count);
+            resultsBuffer.Clear();
             float maxDistSq = maxDistance * maxDistance;
 
             foreach (var kvp in _map)
@@ -38,32 +47,40 @@ namespace Core.Service
 
                 if (distSq <= maxDistSq)
                 {
-                    result.Add(new EntityTransformData(
+                    resultsBuffer.Add(new EntityTransformData(
                         kvp.Key,
                         new Position3(pos.x, pos.y, pos.z),
                         distSq
                     ));
                 }
             }
-
-            return result;
         }
 
         public GameObject? GetGameObject(Guid guid)
         {
-            var kvp = _map.FirstOrDefault(kvp => kvp.Key.Id == guid);
-            return kvp.Value;
+            if (!_guidToEntity.TryGetValue(guid, out var entity))
+            {
+                if (_map.TryGetValue(entity, out var go))
+                {
+                    return go;
+                }
+            }
+            return null;
         }
 
         public void Bind(IEntity entity, GameObject go)
         {
             _map[entity] = go;
+            _guidToEntity[entity.Id] = entity;
         }
 
         public void Unbind(Guid guid)
         {
-            var entity = _map.Keys.FirstOrDefault(e => e.Id == guid);
-            _map.Remove(entity);
+            if (_guidToEntity.TryGetValue(guid, out var entity))
+            {
+                _map.Remove(entity);
+                _guidToEntity.Remove(guid);
+            }
         }
     }
 }
