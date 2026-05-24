@@ -3,13 +3,14 @@ public sealed class Result
 {
     public bool IsSuccess { get; }
     public string? Error { get; }
+    private static readonly Result _cachedSuccess = new(true);
     private Result(bool isSuccess, string? error = null)
     {
         IsSuccess = isSuccess;
         Error = error;
     }
 
-    public static Result Success() => new(true);
+    public static Result Success() => _cachedSuccess;
     public static Result Failure(string Error) => new(false, Error);
 }
 public sealed class Result<T>

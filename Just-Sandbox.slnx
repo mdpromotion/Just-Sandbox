@@ -7,13 +7,9 @@
   <Project Path="Zenject-UnitTests-Editor.csproj" />
   <Project Path="Zenject-Editor.csproj" />
   <Project Path="Zenject-IntegrationTests.csproj" />
-  <Project Path="GamePush.csproj" />
-  <Project Path="GamePush.Data.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="DOTween.Modules.csproj" />
   <Project Path="Zenject-TestFramework.csproj" />
-  <Project Path="GamePush.Editor.csproj" />
   <Project Path="Zenject-PoolMonitor-Editor.csproj" />
   <Project Path="SimpleInput.Editor.csproj" />
-  <Project Path="Assembly-CSharp-firstpass.csproj" />
 </Solution>

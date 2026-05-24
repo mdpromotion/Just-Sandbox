@@ -2,6 +2,7 @@ using Core.Service;
 using Core.Service.Data;
 using Shared.Data;
 using Shared.Domain;
+using System.Collections.Generic;
 
 namespace Feature.Agent.Application 
 {
@@ -19,6 +20,8 @@ namespace Feature.Agent.Application
         private readonly IEntity _entity;
         private readonly float _visionRange;
 
+        private readonly List<EntityTransformData> _entitiesBuffer = new(32);
+
         public NavigationController(IWorldEntityService entityService, IEntity entity, float visionRange)
         {
             _entityService = entityService;
@@ -26,26 +29,35 @@ namespace Feature.Agent.Application
             _visionRange = visionRange;
         }
 
-        public EntityTransformData? FindNearestEntity(Position3 agentPosition)
+        public bool FindNearestEntity(Position3 agentPosition, out EntityTransformData nearestEntity)
         {
-            var entites = _entityService.GetEntitiesAround(agentPosition, _visionRange);
-            if (entites == null)
-                return null;
+            nearestEntity = default;
 
-            EntityTransformData? nearestEntity = null;
-            foreach (var entity in entites)
+            _entityService.GetEntitiesAround(agentPosition, _visionRange, _entitiesBuffer);
+
+            if (_entitiesBuffer.Count == 0)
+                return false;
+
+            bool found = false;
+            float minDistance = float.MaxValue;
+
+            for (int i = 0; i < _entitiesBuffer.Count; i++)
             {
-                if (entity.Entity.Team == _entity.Team)
+                var entityData = _entitiesBuffer[i];
+
+                if (entityData.Entity.Team == _entity.Team)
                     continue;
 
-                var distance = Position3.Distance(agentPosition, entity.Position);
-                if (nearestEntity == null || distance < nearestEntity.Value.DistanceToTarget)
+                var distance = Position3.Distance(agentPosition, entityData.Position);
+                if (!found || distance < minDistance)
                 {
-                    nearestEntity = new EntityTransformData(entity.Entity, entity.Position, distance);
+                    minDistance = distance;
+                    nearestEntity = new EntityTransformData(entityData.Entity, entityData.Position, distance);
+                    found = true;
                 }
             }
 
-            return nearestEntity;
+            return found;
         }
     }
 }

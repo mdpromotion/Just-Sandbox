@@ -12,12 +12,6 @@ namespace Feature.Player.Infrastructure
         private readonly MovementUseCase _movementUseCase;
         private readonly IMovementInput _movementInput;
 
-        private Action<Position2> _onMoveChanged;
-        private Action _jumpPressed;
-        private Action _jumpReleased;
-        private Action _sprintPressed;
-        private Action _sprintReleased;
-
         public PlayerInputController(
             MovementInputState movementState,
             MovementUseCase movementUseCase,
@@ -29,32 +23,50 @@ namespace Feature.Player.Infrastructure
         }
         public void Initialize()
         {
-            _onMoveChanged += dir => UpdateState(s => s.InputDirection = dir);
-            _jumpPressed += () => UpdateState(s => s.IsJumping = true);
-            _jumpReleased += () => UpdateState(s => s.IsJumping = false);
-            _sprintPressed += () => UpdateState(s => s.IsSprinting = true);
-            _sprintReleased += () => UpdateState(s => s.IsSprinting = false);
-
-            _movementInput.MoveChanged += _onMoveChanged;
-            _movementInput.JumpPressed += _jumpPressed;
-            _movementInput.JumpReleased += _jumpReleased;
-            _movementInput.SprintPressed += _sprintPressed;
-            _movementInput.SprintReleased += _sprintReleased;
+            _movementInput.MoveChanged += OnMoveChanged;
+            _movementInput.JumpPressed += OnJumpPressed;
+            _movementInput.JumpReleased += OnJumpReleased;
+            _movementInput.SprintPressed += OnSprintPressed;
+            _movementInput.SprintReleased += OnSprintReleased;
         }
 
-        private void UpdateState(Action<MovementInputState> update)
+        private void OnMoveChanged(Position2 dir)
         {
-            update(_movementState);
+            _movementState.InputDirection = dir;
+            _movementUseCase.Move();
+        }
+
+        private void OnJumpPressed()
+        {
+            _movementState.IsJumping = true;
+            _movementUseCase.Move();
+        }
+
+        private void OnJumpReleased()
+        {
+            _movementState.IsJumping = false;
+            _movementUseCase.Move();
+        }
+
+        private void OnSprintPressed()
+        {
+            _movementState.IsSprinting = true;
+            _movementUseCase.Move();
+        }
+
+        private void OnSprintReleased()
+        {
+            _movementState.IsSprinting = false;
             _movementUseCase.Move();
         }
 
         public void Dispose()
         {
-            _movementInput.MoveChanged -= _onMoveChanged;
-            _movementInput.JumpPressed -= _jumpPressed;
-            _movementInput.JumpReleased -= _jumpReleased;
-            _movementInput.SprintPressed -= _sprintPressed;
-            _movementInput.SprintReleased -= _sprintReleased;
+            _movementInput.MoveChanged -= OnMoveChanged;
+            _movementInput.JumpPressed -= OnJumpPressed;
+            _movementInput.JumpReleased -=  OnJumpReleased;
+            _movementInput.SprintPressed -= OnSprintPressed;
+            _movementInput.SprintReleased -= OnSprintReleased;
         }
 
     }
