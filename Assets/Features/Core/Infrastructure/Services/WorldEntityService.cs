@@ -12,8 +12,10 @@ namespace Core.Service
     public class WorldEntityService : IWorldEntityService
     {
         private readonly Dictionary<IEntity, GameObject> _map = new();
+        private readonly Dictionary<GameObject, IEntity> _gameObjectToEntity = new();
         private readonly Dictionary<Guid, IEntity> _guidToEntity = new();
         private readonly Collider[] _physicsBuffer = new Collider[512];
+        private readonly int _entityLayerMask = LayerMask.GetMask("NPC", "Player");
 
         public bool TryGetPosition(Guid guid, out Position3? position)
         {
@@ -32,28 +34,35 @@ namespace Core.Service
         public void GetEntitiesAround(Position3 position, float maxDistance, List<EntityTransformData> resultsBuffer)
         {
             resultsBuffer.Clear();
-            float maxDistSq = maxDistance * maxDistance;
+            Vector3 center = Mapper.ToVector3(position);
 
-            foreach (var kvp in _map)
+            int hitCount = Physics.OverlapSphereNonAlloc(
+                center,
+                maxDistance,
+                _physicsBuffer,
+                _entityLayerMask,
+                QueryTriggerInteraction.Ignore
+            );
+
+            for (int i = 0; i < hitCount; i++)
             {
-                var transform = kvp.Value.transform;
-                var pos = transform.position;
+                Collider hitCollider = _physicsBuffer[i];
+                if (hitCollider == null) continue;
 
-                float dx = pos.x - position.X;
-                float dy = pos.y - position.Y;
-                float dz = pos.z - position.Z;
-
-                float distSq = dx * dx + dy * dy + dz * dz;
-
-                if (distSq <= maxDistSq)
+                if (_gameObjectToEntity.TryGetValue(hitCollider.gameObject, out var foundEntity))
                 {
+                    Vector3 entityPos = hitCollider.transform.position;
+                    float distSq = Vector3.SqrMagnitude(center - entityPos);
+
                     resultsBuffer.Add(new EntityTransformData(
-                        kvp.Key,
-                        new Position3(pos.x, pos.y, pos.z),
+                        foundEntity,
+                        Mapper.ToPosition3(entityPos),
                         distSq
                     ));
                 }
             }
+
+            Array.Clear(_physicsBuffer, 0, hitCount);
         }
 
         public GameObject? GetGameObject(Guid guid)
@@ -72,12 +81,17 @@ namespace Core.Service
         {
             _map[entity] = go;
             _guidToEntity[entity.Id] = entity;
+            _gameObjectToEntity[go] = entity;
         }
 
         public void Unbind(Guid guid)
         {
             if (_guidToEntity.TryGetValue(guid, out var entity))
             {
+                if (_map.TryGetValue(entity, out var go) && go != null)
+                {
+                    _gameObjectToEntity.Remove(go);
+                }
                 _map.Remove(entity);
                 _guidToEntity.Remove(guid);
             }
