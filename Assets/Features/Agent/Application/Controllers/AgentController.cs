@@ -1,4 +1,5 @@
 using Core.Data;
+using Core.Service.Data;
 using Feature.Agent.Domain;
 using Feature.Agent.Infrastructure;
 using Shared.Data;
@@ -51,19 +52,19 @@ namespace Feature.Agent.Application
         private void EvaluateTransitions()
         {
             var agentPosition = _controller.Position;
-            var targetPosition = _navigationController.FindNearestEntity(agentPosition);
+            bool targetFound = _navigationController.FindNearestEntity(agentPosition, out var nearestEntity);
 
-            if (targetPosition == null)
+            if (!targetFound)
             {
                 RequestStateChange("Idle");
                 return;
             }
 
-            _targetPosition = targetPosition.Value.Position;
+            _targetPosition = nearestEntity.Position;
 
             switch (_fsm.CurrentState)
             {
-                case IdleState when targetPosition.HasValue:
+                case IdleState when targetFound:
                     RequestStateChange("Move");
                     break;
             }
