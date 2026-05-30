@@ -1,12 +1,15 @@
 using Feature.Combat.Presentation;
 using Zenject;
 
-public class WeaponUIInstaller : Installer
+namespace Feature.Combat.Installers
 {
-    public override void InstallBindings()
+    public class WeaponUIInstaller : Installer
     {
-        Container.BindInterfacesTo<Presenter>().AsSingle();
-        Container.Bind<AmmoView>().FromComponentInHierarchy().AsSingle();
-        Container.BindInterfacesTo<View>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.BindInterfacesTo<Presenter>().AsSingle();
+            Container.Bind<AmmoView>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<View>().AsSingle();
+        }
     }
 }

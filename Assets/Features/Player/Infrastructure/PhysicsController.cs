@@ -15,12 +15,15 @@ namespace Feature.Player.Infrastructure
         private CapsuleCollider _collider;
         private IPlayerTransformData _playerTransformData;
 
+        private int _groundLayerMask;
+
         private bool _knockbackActive;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
             _collider = GetComponent<CapsuleCollider>();
+            _groundLayerMask = LayerMask.GetMask("Default", "Interactable");
         }
 
         [Inject]
@@ -81,7 +84,7 @@ namespace Feature.Player.Infrastructure
             Vector3 center = Mapper.ToVector3(_playerTransformData.Position) + _collider.center;
             Vector3 checkPos = center - Vector3.up * (_collider.height / 2f - radius + 0.1f);
 
-            bool isGrounded = Physics.CheckSphere(checkPos, radius, LayerMask.GetMask("Default", "Interactable"), QueryTriggerInteraction.Ignore);
+            bool isGrounded = Physics.CheckSphere(checkPos, radius, _groundLayerMask, QueryTriggerInteraction.Ignore);
 
             if (_knockbackActive && isGrounded)
                 _knockbackActive = false;

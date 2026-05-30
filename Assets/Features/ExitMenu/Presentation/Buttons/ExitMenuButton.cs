@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Feature.PlayerExitMenu.Presentation
+namespace Feature.ExitMenu.Presentation
 {
     public enum NavigationButtonType { Continue, Exit }
 

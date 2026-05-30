@@ -1,6 +1,6 @@
 using System;
 
-namespace Feature.PlayerExitMenu.Presentation
+namespace Feature.ExitMenu.Presentation
 {
     public interface IView
     {

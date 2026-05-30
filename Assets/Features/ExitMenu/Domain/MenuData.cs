@@ -1,6 +1,6 @@
 using System;
 
-namespace Feature.PlayerExitMenu.Domain
+namespace Feature.ExitMenu.Domain
 {
     public class MenuData : IMenuData, IMenuEvents
     {

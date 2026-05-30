@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace Feature.PlayerExitMenu.Application
+namespace Feature.ExitMenu.Application
 {
     public interface IMenuUseCase
     {

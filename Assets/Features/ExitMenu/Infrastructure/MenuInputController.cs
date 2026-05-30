@@ -1,9 +1,9 @@
 using Core.PlayerInput;
-using Feature.PlayerExitMenu.Application;
+using Feature.ExitMenu.Application;
 using System;
 using Zenject;
 
-namespace Feature.PlayerExitMenu.Infrastructure
+namespace Feature.ExitMenu.Infrastructure
 {
     public class MenuInputController : IInitializable, IDisposable
     {

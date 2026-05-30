@@ -1,11 +1,14 @@
 using Feature.Player.Presentation;
 using Zenject;
 
-public class PlayerUIInstaller : Installer
+namespace Feature.Player.Installers
 {
-    public override void InstallBindings()
+    public class PlayerUIInstaller : Installer
     {
-        Container.Bind<ILifeView>().To<LifeView>().FromComponentInHierarchy().AsSingle();
-        Container.BindInterfacesTo<LifePresenter>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<ILifeView>().To<LifeView>().FromComponentInHierarchy().AsSingle();
+            Container.BindInterfacesTo<LifePresenter>().AsSingle();
+        }
     }
 }

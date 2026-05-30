@@ -4,37 +4,40 @@ using Feature.Toolbox.Presentation.Buttons;
 using System.Collections.Generic;
 using Zenject;
 
-public class ToolboxUIInstaller : Installer
+namespace Feature.Toolbox.Installers
 {
-    public override void InstallBindings()
+    public class ToolboxUIInstaller : Installer
     {
-        Container.Bind<IView>().To<View>().FromComponentInHierarchy().AsSingle();
-
-        InstallButtons();
-        InstallPresenter();
-        Container.Bind<Dictionary<SpawnCategory, ISpawnUseCase>>().FromMethod(context =>
+        public override void InstallBindings()
         {
-            return new Dictionary<SpawnCategory, ISpawnUseCase>
+            Container.Bind<IView>().To<View>().FromComponentInHierarchy().AsSingle();
+
+            InstallButtons();
+            InstallPresenter();
+            Container.Bind<Dictionary<SpawnCategory, ISpawnUseCase>>().FromMethod(context =>
             {
+                return new Dictionary<SpawnCategory, ISpawnUseCase>
+                {
                 { SpawnCategory.Item, context.Container.ResolveId<ISpawnUseCase>("Item") },
                 { SpawnCategory.NPC, context.Container.ResolveId<ISpawnUseCase>("NPC")  }
-            };
+                };
 
-        }).AsSingle();
-    }
+            }).AsSingle();
+        }
 
-    private void InstallButtons()
-    {
-        Container.Bind<TabButtonView>().FromComponentsInHierarchy().AsSingle();
-        Container.Bind<SpawnButtonView>().FromComponentsInHierarchy().AsSingle();
-        Container.Bind<SpawnModeButtonView>().FromComponentsInHierarchy().AsSingle();
-        Container.Bind<TextureButtonView>().FromComponentsInHierarchy().AsSingle();
-    }
+        private void InstallButtons()
+        {
+            Container.Bind<TabButtonView>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<SpawnButtonView>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<SpawnModeButtonView>().FromComponentsInHierarchy().AsSingle();
+            Container.Bind<TextureButtonView>().FromComponentsInHierarchy().AsSingle();
+        }
 
-    private void InstallPresenter()
-    {
-        Container.BindInterfacesTo<MenuPresenter>().AsSingle();
-        Container.BindInterfacesTo<SpawnPresenter>().AsSingle();
-        Container.BindInterfacesTo<SpawnSettingsPresenter>().AsSingle();
+        private void InstallPresenter()
+        {
+            Container.BindInterfacesTo<MenuPresenter>().AsSingle();
+            Container.BindInterfacesTo<SpawnPresenter>().AsSingle();
+            Container.BindInterfacesTo<SpawnSettingsPresenter>().AsSingle();
+        }
     }
 }
