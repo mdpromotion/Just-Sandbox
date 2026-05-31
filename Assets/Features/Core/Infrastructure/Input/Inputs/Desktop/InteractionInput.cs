@@ -1,9 +1,9 @@
 using System;
-using System.Reflection;
-using Unity.VisualScripting;
+using Core.PlayerInput;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using UnityEngine;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Desktop
 {
     public enum MouseButton
     {
@@ -21,7 +21,7 @@ namespace Core.PlayerInput
         public event Action<MouseButton> MouseUp;
         public event Action<MouseButton> MouseHeld;
 
-        private static readonly MouseButton[] _allButtons =
+        private static readonly MouseButton[] AllButtons =
         {
             MouseButton.Left,
             MouseButton.Right
@@ -29,24 +29,24 @@ namespace Core.PlayerInput
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 InteractPressed?.Invoke();
             }
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Q))
             {
                 DropPressed?.Invoke();
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.R))
             {
                 ReloadPressed?.Invoke();
             }
-            foreach (MouseButton button in _allButtons)
+            foreach (MouseButton button in AllButtons)
             {
                 int index = (int)button;
-                if (Input.GetMouseButton(index)) MouseHeld?.Invoke(button);
-                if (Input.GetMouseButtonUp(index)) MouseUp?.Invoke(button);
-                if (Input.GetMouseButtonDown(index)) MouseDown?.Invoke(button);
+                if (UnityEngine.Input.GetMouseButton(index)) MouseHeld?.Invoke(button);
+                if (UnityEngine.Input.GetMouseButtonUp(index)) MouseUp?.Invoke(button);
+                if (UnityEngine.Input.GetMouseButtonDown(index)) MouseDown?.Invoke(button);
             }
         }
     }

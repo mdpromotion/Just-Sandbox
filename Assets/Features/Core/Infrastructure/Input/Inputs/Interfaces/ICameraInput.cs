@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Interfaces
 {
     public interface ICameraInput
     {

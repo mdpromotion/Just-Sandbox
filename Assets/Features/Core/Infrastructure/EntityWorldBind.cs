@@ -1,7 +1,7 @@
 using Shared.Domain;
 using UnityEngine;
 
-namespace Feature.Core.Infrastructure
+namespace Features.Core.Infrastructure
 {
     /// <summary>
     /// Provides a component that binds an entity to a target, enabling interaction between them within the game world.

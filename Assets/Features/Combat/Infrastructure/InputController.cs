@@ -1,6 +1,8 @@
 using System;
 using Core.PlayerInput;
 using Features.Combat.Infrastructure.Interfaces;
+using Features.Core.Infrastructure.Input.Inputs.Desktop;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using Zenject;
 
 namespace Features.Combat.Infrastructure

@@ -1,6 +1,6 @@
 using System;
-using Feature.Core.Infrastructure;
 using Features.Agent.Application.Controllers.Interfaces;
+using Features.Core.Infrastructure;
 using Shared.Domain;
 using UnityEngine;
 

@@ -1,13 +1,13 @@
 #nullable enable
-using Core.Service.Data;
-using Shared.Data;
-using Shared.Domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Core.Service;
+using Features.Core.Infrastructure.Services.Data;
+using Shared.Data;
+using Shared.Domain;
 using UnityEngine;
 
-namespace Core.Service
+namespace Features.Core.Infrastructure.Services
 {
     public class WorldEntityService : IWorldEntityService
     {
@@ -21,22 +21,17 @@ namespace Core.Service
         {
             position = null;
 
-            if (_guidToEntity.TryGetValue(guid, out var entity))
-            {
-                if (_map.TryGetValue(entity, out var go) && go != null)
-                {
-                    position = Mapper.ToPosition3(go.transform.position);
-                    return true;
-                }
-            }
-            return false;
+            if (!_guidToEntity.TryGetValue(guid, out var entity)) return false;
+            if (!_map.TryGetValue(entity, out var go) || go == null) return false;
+            position = go.transform.position.ToPosition3();
+            return true;
         }
         public void GetEntitiesAround(Position3 position, float maxDistance, List<EntityTransformData> resultsBuffer)
         {
             resultsBuffer.Clear();
-            Vector3 center = Mapper.ToVector3(position);
+            var center = position.ToVector3();
 
-            int hitCount = Physics.OverlapSphereNonAlloc(
+            var hitCount = Physics.OverlapSphereNonAlloc(
                 center,
                 maxDistance,
                 _physicsBuffer,
@@ -44,15 +39,15 @@ namespace Core.Service
                 QueryTriggerInteraction.Ignore
             );
 
-            for (int i = 0; i < hitCount; i++)
+            for (var i = 0; i < hitCount; i++)
             {
-                Collider hitCollider = _physicsBuffer[i];
+                var hitCollider = _physicsBuffer[i];
                 if (hitCollider == null) continue;
 
                 if (_gameObjectToEntity.TryGetValue(hitCollider.gameObject, out var foundEntity))
                 {
-                    Vector3 entityPos = hitCollider.transform.position;
-                    float distSq = Vector3.SqrMagnitude(center - entityPos);
+                    var entityPos = hitCollider.transform.position;
+                    var distSq = Vector3.SqrMagnitude(center - entityPos);
 
                     resultsBuffer.Add(new EntityTransformData(
                         foundEntity,
@@ -67,14 +62,7 @@ namespace Core.Service
 
         public GameObject? GetGameObject(Guid guid)
         {
-            if (!_guidToEntity.TryGetValue(guid, out var entity))
-            {
-                if (_map.TryGetValue(entity, out var go))
-                {
-                    return go;
-                }
-            }
-            return null;
+            return _guidToEntity.TryGetValue(guid, out var entity) ? null : _map.GetValueOrDefault(entity);
         }
 
         public void Bind(IEntity entity, GameObject go)

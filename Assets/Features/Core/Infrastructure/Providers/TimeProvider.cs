@@ -1,7 +1,7 @@
 using Shared.Providers;
 using UnityEngine;
 
-namespace Core.Providers
+namespace Features.Core.Infrastructure.Providers
 {
     public class TimeProvider : ITimeProvider
     {

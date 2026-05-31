@@ -1,4 +1,6 @@
 using Core.PlayerInput;
+using Features.Core.Infrastructure.Input.Inputs.Desktop;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using Zenject;
 
 public class InputInstaller : Installer

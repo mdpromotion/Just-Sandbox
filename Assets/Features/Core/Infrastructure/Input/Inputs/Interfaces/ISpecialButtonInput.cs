@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Interfaces
 {
     public interface ISpecialButtonInput
     {

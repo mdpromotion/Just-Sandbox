@@ -1,7 +1,9 @@
 using System;
+using Core.PlayerInput;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using UnityEngine;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Desktop
 {
     public class DesktopInventoryInput : IInventoryInput
     {
@@ -24,26 +26,26 @@ namespace Core.PlayerInput
 
         public void Tick()
         {
-            for (int i = 1; i < _keys.Length; i++)
+            for (var i = 1; i < _keys.Length; i++)
             {
-                if (Input.GetKeyDown(_keys[i]))
+                if (UnityEngine.Input.GetKeyDown(_keys[i]))
                 {
                     SlotPressed?.Invoke(i);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 InteractPressed?.Invoke();
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.R))
             {
                 ReloadPressed?.Invoke();
             }
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Q))
             {
                 DropPressed?.Invoke();
             }
-            if (Input.GetKeyDown(KeyCode.H))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.H))
             {
                 ToolPressed?.Invoke();
             }

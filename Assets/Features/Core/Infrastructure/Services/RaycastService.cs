@@ -1,6 +1,7 @@
+using Core.Service;
 using UnityEngine;
 
-namespace Core.Service
+namespace Features.Core.Infrastructure.Services
 {
     public class RaycastService : IRaycastService
     {
@@ -9,7 +10,7 @@ namespace Core.Service
             Ray ray = new(origin, direction);
             Vector3 basePosition;
 
-            if (Physics.Raycast(ray, out RaycastHit hit, distance))
+            if (Physics.Raycast(ray, out var hit, distance))
             {
                 basePosition = hit.point;
                 Debug.DrawRay(origin, direction * hit.distance, Color.red, 1f);
@@ -26,7 +27,7 @@ namespace Core.Service
         public GameObject GetRaycastObject(Vector3 origin, Vector3 direction, float distance, LayerMask layer)
         {
             Ray ray = new(origin, direction);
-            if (Physics.Raycast(ray, out RaycastHit hit, distance, layer))
+            if (Physics.Raycast(ray, out var hit, distance, layer))
             {
                 Debug.DrawRay(origin, direction * hit.distance, Color.red, 1f); 
                 return hit.collider.gameObject;

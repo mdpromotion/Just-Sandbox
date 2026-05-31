@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Core.Service;
-using Core.Service.Data;
+using Features.Core.Infrastructure.Services.Data;
 using Shared.Data;
 using Shared.Domain;
 

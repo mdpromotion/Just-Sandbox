@@ -1,6 +1,7 @@
 using Core.PlayerInput;
 using Feature.ExitMenu.Application;
 using System;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using Zenject;
 
 namespace Feature.ExitMenu.Infrastructure

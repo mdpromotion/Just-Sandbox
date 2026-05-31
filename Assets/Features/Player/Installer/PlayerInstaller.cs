@@ -1,8 +1,8 @@
-using Feature.Core.Infrastructure;
 using Feature.Player.Application;
 using Feature.Player.Domain;
 using Feature.Player.Infrastructure;
 using Feature.Player.Presentation;
+using Features.Core.Infrastructure;
 using Zenject;
 
 public class PlayerInstaller : Installer

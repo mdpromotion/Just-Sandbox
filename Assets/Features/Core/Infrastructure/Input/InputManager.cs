@@ -1,3 +1,4 @@
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using Zenject;
 
 namespace Core.PlayerInput

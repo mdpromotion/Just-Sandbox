@@ -1,9 +1,9 @@
-using UnityEngine;
 using System;
 using System.Collections;
 using Shared.Service;
+using UnityEngine;
 
-namespace Core.Service
+namespace Features.Core.Infrastructure.Services
 {
     public class DelayService : MonoBehaviour, IDelay
     {

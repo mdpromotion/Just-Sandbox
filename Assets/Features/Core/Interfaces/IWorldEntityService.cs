@@ -1,9 +1,9 @@
 #nullable enable
-using Core.Service.Data;
 using Shared.Data;
 using Shared.Domain;
 using System;
 using System.Collections.Generic;
+using Features.Core.Infrastructure.Services.Data;
 using UnityEngine;
 
 namespace Core.Service

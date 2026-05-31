@@ -1,10 +1,10 @@
-using Core.Providers;
 using Feature.ExitMenu.Installers;
 using Feature.Inventory.Installers;
 using Feature.Player.Installers;
 using Feature.Toolbox.Installers;
 using Feature.UI.Utils;
 using Features.Combat.Installer;
+using Features.Core.Infrastructure.Providers;
 using Zenject;
 
 public class UIInstaller : Installer

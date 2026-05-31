@@ -1,6 +1,7 @@
 using System;
 using Core.PlayerInput;
 using Features.Camera.Application.UseCases;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using UnityEngine;
 using Zenject;
 

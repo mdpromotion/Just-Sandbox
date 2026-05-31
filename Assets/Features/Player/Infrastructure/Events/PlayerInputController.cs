@@ -2,6 +2,7 @@ using Core.PlayerInput;
 using Feature.Player.Application;
 using Shared.Data;
 using System;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using Zenject;
 
 namespace Feature.Player.Infrastructure

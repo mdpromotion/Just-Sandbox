@@ -1,8 +1,7 @@
 using Shared.Data;
 using Shared.Domain;
-using System;
 
-namespace Core.Service.Data
+namespace Features.Core.Infrastructure.Services.Data
 {
     public readonly struct EntityTransformData
     {

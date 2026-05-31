@@ -1,8 +1,9 @@
 using System;
+using Core.PlayerInput;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using UnityEngine;
-using Zenject;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Desktop
 {
     public class DesktopCameraInput : ICameraInput
     {
@@ -10,7 +11,7 @@ namespace Core.PlayerInput
 
         public void Tick()
         {
-            Vector2 delta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+            Vector2 delta = new Vector2(UnityEngine.Input.GetAxis("Mouse X"), UnityEngine.Input.GetAxis("Mouse Y"));
             if (delta.magnitude > 0.001f)
                 MouseMoved?.Invoke(delta);
         }

@@ -1,9 +1,11 @@
 using Core.Data;
-using Core.Providers;
 using Core.Service;
 using Feature.Storage.Domain;
 using Features.Audio;
 using Features.Audio.Interfaces;
+using Features.Core.Data;
+using Features.Core.Infrastructure.Providers;
+using Features.Core.Infrastructure.Services;
 using Shared.Providers;
 using Shared.Service;
 using UnityEngine;

@@ -1,5 +1,5 @@
 using Feature.Agent.Infrastructure;
-using Feature.Core.Infrastructure;
+using Features.Core.Infrastructure;
 using UnityEngine;
 
 namespace Features.Agent.Infrastructure.Services

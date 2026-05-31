@@ -1,8 +1,10 @@
-using Shared.Data;
 using System;
+using Core.PlayerInput;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
+using Shared.Data;
 using UnityEngine;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Desktop
 {
     public class DesktopMovementInput : IMovementInput
     {
@@ -15,10 +17,10 @@ namespace Core.PlayerInput
 
         public void Tick()
         {
-            bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
-            bool jumpReleased = Input.GetKeyUp(KeyCode.Space);
-            bool sprintPressed = Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift);
-            bool sprintReleased = Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift);
+            bool jumpPressed = UnityEngine.Input.GetKeyDown(KeyCode.Space);
+            bool jumpReleased = UnityEngine.Input.GetKeyUp(KeyCode.Space);
+            bool sprintPressed = UnityEngine.Input.GetKeyDown(KeyCode.LeftShift) || UnityEngine.Input.GetKeyDown(KeyCode.RightShift);
+            bool sprintReleased = UnityEngine.Input.GetKeyUp(KeyCode.LeftShift) || UnityEngine.Input.GetKeyUp(KeyCode.RightShift);
 
             if (jumpPressed)
             {
@@ -36,7 +38,7 @@ namespace Core.PlayerInput
             {
                 SprintReleased?.Invoke();
             }
-            Position2 moveInput = new Position2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            Position2 moveInput = new Position2(UnityEngine.Input.GetAxisRaw("Horizontal"), UnityEngine.Input.GetAxisRaw("Vertical"));
             MoveChanged?.Invoke(moveInput);
         }
     }

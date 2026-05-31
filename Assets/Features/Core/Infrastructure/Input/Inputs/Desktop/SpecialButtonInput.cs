@@ -1,7 +1,9 @@
 using System;
+using Core.PlayerInput;
+using Features.Core.Infrastructure.Input.Inputs.Interfaces;
 using UnityEngine;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Desktop
 {
     public class DesktopSpecialButtonInput : ISpecialButtonInput
     {
@@ -9,7 +11,7 @@ namespace Core.PlayerInput
 
         public void Tick()
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.X))
             {
                 ExitMenuPressed?.Invoke();
             }

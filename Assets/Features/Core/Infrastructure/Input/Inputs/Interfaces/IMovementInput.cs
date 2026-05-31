@@ -1,7 +1,7 @@
-using Shared.Data;
 using System;
+using Shared.Data;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Interfaces
 {
     public interface IMovementInput
     {

@@ -1,6 +1,7 @@
+using Core.Data;
 using Feature.Player.Domain;
 
-namespace Core.Data
+namespace Features.Core.Data
 {
     public class CoreGameStates : IReadOnlyCoreGameStates
     {

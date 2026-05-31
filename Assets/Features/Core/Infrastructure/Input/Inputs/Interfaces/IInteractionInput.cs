@@ -1,6 +1,7 @@
 using System;
+using Features.Core.Infrastructure.Input.Inputs.Desktop;
 
-namespace Core.PlayerInput
+namespace Features.Core.Infrastructure.Input.Inputs.Interfaces
 {
     public interface IInteractionInput
     {

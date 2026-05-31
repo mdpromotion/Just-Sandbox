@@ -1,7 +1,7 @@
 #nullable enable
 using Core.Service;
-using Feature.Core.Infrastructure;
 using Features.Combat.Application.Interfaces;
+using Features.Core.Infrastructure;
 using Shared.Domain;
 using Shared.Providers;
 using UnityEngine;
