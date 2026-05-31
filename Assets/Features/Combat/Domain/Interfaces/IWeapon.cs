@@ -1,7 +1,7 @@
-using Feature.Combat.Data;
 using System;
+using Features.Combat.Data;
 
-namespace Feature.Combat.Domain
+namespace Features.Combat.Domain.Interfaces
 {
     /// <summary>
     /// Defines the contract for a weapon within the game world, providing access to its identity, configuration, type,

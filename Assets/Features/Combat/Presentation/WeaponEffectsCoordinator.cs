@@ -1,12 +1,10 @@
-using Feature.Combat.Application;
-using Feature.Combat.Domain;
-using Feature.Combat.Infrastructure;
-using Feature.Items.Infrastructure;
 using System;
 using Features.Audio.Interfaces;
+using Features.Combat.Domain.Interfaces;
+using Features.Combat.Presentation.Interfaces;
 using Zenject;
 
-namespace Feature.Combat.Presentation
+namespace Features.Combat.Presentation
 {
     public class WeaponEffectsCoordinator : IInitializable, IDisposable
     {

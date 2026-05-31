@@ -1,8 +1,7 @@
-using Feature.Combat.Domain;
 using System;
-using UnityEngine;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Application
+namespace Features.Combat.Presentation.Interfaces
 {
     public interface IUseEvents
     {

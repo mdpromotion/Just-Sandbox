@@ -1,10 +1,9 @@
-using Core.PlayerInput;
-using Feature.Combat.Application;
 using System;
-using UnityEngine;
+using Core.PlayerInput;
+using Features.Combat.Infrastructure.Interfaces;
 using Zenject;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     public class InputController : IInitializable, IDisposable
     {

@@ -1,7 +1,8 @@
+using Features.Combat.Presentation.Interfaces;
 using UnityEngine;
 using Zenject;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     public class ParticleAnimator : IParticleAnimator
     {

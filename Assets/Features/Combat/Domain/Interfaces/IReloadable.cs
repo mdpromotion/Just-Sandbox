@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Feature.Combat.Domain
+namespace Features.Combat.Domain.Interfaces
 {
     /// <summary>
     /// Defines a contract for objects that support reloading their internal state or configuration.

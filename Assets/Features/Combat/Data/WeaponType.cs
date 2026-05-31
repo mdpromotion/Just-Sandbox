@@ -1,4 +1,4 @@
-namespace Feature.Combat.Data
+namespace Features.Combat.Data
 {
     public enum WeaponType
     {

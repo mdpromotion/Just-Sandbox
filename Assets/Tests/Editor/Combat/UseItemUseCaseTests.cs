@@ -1,11 +1,14 @@
 using Feature.Combat.Application;
-using Feature.Combat.Data;
-using Feature.Combat.Domain;
 using Feature.Inventory.Domain;
 using Moq;
 using NUnit.Framework;
 using Shared.Providers;
 using System;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Application.UseCases;
+using Features.Combat.Data;
+using Features.Combat.Domain.Interfaces;
+using Features.Combat.Presentation.Interfaces;
 
 namespace Tests.Combat
 {

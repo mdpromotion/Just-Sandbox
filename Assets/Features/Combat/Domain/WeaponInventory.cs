@@ -2,18 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Features.Combat.Domain.Interfaces;
+using Features.Combat.Presentation.Interfaces;
 
-namespace Feature.Combat.Domain
+namespace Features.Combat.Domain
 {
     public class WeaponInventory : IReadOnlyWeaponInventory
     {
-        private List<IWeapon> _inventoryWeapons;
+        private readonly List<IWeapon> _inventoryWeapons = new();
         public IReadOnlyList<IWeapon> Weapons => _inventoryWeapons.AsReadOnly();
-
-        public WeaponInventory()
-        {
-            _inventoryWeapons = new List<IWeapon>();
-        }
 
         public Result<IWeapon> Add(IWeapon weapon)
         {

@@ -1,5 +1,5 @@
-using Feature.Combat.Infrastructure;
 using Feature.Items.Infrastructure;
+using Features.Combat.Infrastructure;
 
 namespace Feature.Toolbox.Infrastructure
 {

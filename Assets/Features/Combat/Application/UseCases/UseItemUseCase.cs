@@ -1,9 +1,11 @@
-using Feature.Combat.Domain;
-using Feature.Inventory.Domain;
-using Shared.Providers;
 using System;
+using Feature.Inventory.Domain;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Domain.Interfaces;
+using Features.Combat.Presentation.Interfaces;
+using Shared.Providers;
 
-namespace Feature.Combat.Application
+namespace Features.Combat.Application.UseCases
 {
     public class UseItemUseCase : IUseItemUseCase
     {

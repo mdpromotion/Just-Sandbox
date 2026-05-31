@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Feature.Combat.Presentation
+namespace Features.Combat.Presentation.Interfaces
 {
     public interface IView
     {

@@ -1,8 +1,6 @@
-using System;
-using UnityEngine;
-using Zenject;
+using Features.Combat.Presentation.Interfaces;
 
-namespace Feature.Combat.Presentation
+namespace Features.Combat.Presentation.View
 {
     public class View : IView
     {

@@ -1,7 +1,6 @@
-using Feature.Combat.Domain;
-using UnityEngine;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Application
+namespace Features.Combat.Application.Interfaces
 {
     public interface IWeaponShotUseCase
     {

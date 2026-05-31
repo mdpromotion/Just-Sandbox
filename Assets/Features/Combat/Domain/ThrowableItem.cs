@@ -1,7 +1,8 @@
-using Feature.Combat.Data;
 using System;
+using Features.Combat.Data;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Domain
+namespace Features.Combat.Domain
 {
     public class ThrowableItem : IWeapon, IUsable
     {

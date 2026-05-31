@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Feature.Combat.Presentation
+namespace Features.Combat.Presentation.View
 {
     [RequireComponent(typeof(Text))]
     public class AmmoView : MonoBehaviour

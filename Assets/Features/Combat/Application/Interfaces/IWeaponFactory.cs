@@ -1,7 +1,7 @@
-using Feature.Combat.Domain;
 using System;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Application.Interfaces
 {
     public interface IWeaponFactory
     {

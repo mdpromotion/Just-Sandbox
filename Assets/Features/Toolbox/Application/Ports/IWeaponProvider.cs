@@ -1,5 +1,5 @@
-using Feature.Combat.Data;
 using Feature.Items.Infrastructure;
+using Features.Combat.Data;
 
 public interface IWeaponProvider : IItemProvider
 {

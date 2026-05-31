@@ -1,6 +1,7 @@
 using UnityEngine;
 
-namespace Weapon
+// This class is deprecated. Use ParticleBind instead.
+namespace Features.Combat.Modules
 {
     public class WeaponModule : MonoBehaviour
     {

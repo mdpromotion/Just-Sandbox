@@ -1,3 +1,4 @@
+using Features.Combat.Presentation.Interfaces;
 using UnityEngine;
 
 namespace Feature.Items.Infrastructure

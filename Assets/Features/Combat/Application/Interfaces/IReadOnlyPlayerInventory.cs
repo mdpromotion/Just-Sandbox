@@ -1,6 +1,6 @@
 using System;
 
-namespace Feature.Inventory.Domain
+namespace Features.Combat.Application.Interfaces
 {
     public interface IReadOnlyPlayerInventory
     {

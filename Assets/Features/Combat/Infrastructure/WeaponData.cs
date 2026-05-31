@@ -1,7 +1,7 @@
-using Feature.Combat.Data;
+using Features.Combat.Data;
 using UnityEngine;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     [CreateAssetMenu(fileName = "WeaponData", menuName = "Data/Weapon")]
     public class WeaponData : ItemData

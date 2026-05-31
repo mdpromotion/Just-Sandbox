@@ -1,10 +1,10 @@
-using Feature.Combat.Domain;
-using Feature.Combat.Infrastructure;
 using Feature.Toolbox.Infrastructure;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Domain.Interfaces;
 using Shared.Data;
 using Shared.Providers;
 
-namespace Feature.Combat.Application
+namespace Features.Combat.Application.UseCases
 {
     public class WeaponShotUseCase : IWeaponShotUseCase
     {

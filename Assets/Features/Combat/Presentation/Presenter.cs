@@ -1,12 +1,11 @@
-using Feature.Combat.Application;
-using Feature.Combat.Domain;
+using System;
 using Feature.Inventory.Application;
 using Feature.Inventory.Data;
-using Feature.Inventory.Domain;
-using System;
+using Features.Combat.Domain.Interfaces;
+using Features.Combat.Presentation.Interfaces;
 using Zenject;
 
-namespace Feature.Combat.Presentation
+namespace Features.Combat.Presentation
 {
     public class Presenter : IInitializable, IDisposable
     {

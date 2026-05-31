@@ -1,13 +1,17 @@
-using Core.Data;
-using Feature.Combat.Domain;
 using System;
+using Core.Data;
+using Feature.Combat.Application;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Domain.Interfaces;
+using Features.Combat.Infrastructure.Interfaces;
+using Features.Combat.Presentation.Interfaces;
 using UnityEngine;
 
-namespace Feature.Combat.Application
+namespace Features.Combat.Application.UseCases
 {
     public class UseItemOrchestrator : IUseItemInput, IUseEvents
     {
-        public static readonly string LogTag = nameof(UseItemOrchestrator);
+        public const string LogTag = nameof(UseItemOrchestrator);
 
         private readonly IUseItemUseCase _useItem;
         private readonly IWeaponShotUseCase _useWeapon;

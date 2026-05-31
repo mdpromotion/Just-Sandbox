@@ -1,9 +1,10 @@
-using Feature.Combat.Data;
-using Feature.Combat.Domain;
 using System;
-using UnityEngine;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Data;
+using Features.Combat.Domain;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     public class WeaponFactory : IWeaponFactory
     {

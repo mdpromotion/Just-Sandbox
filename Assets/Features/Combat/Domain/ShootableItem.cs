@@ -1,7 +1,8 @@
-using Feature.Combat.Data;
 using System;
+using Features.Combat.Data;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Domain
+namespace Features.Combat.Domain
 {
     public class ShootableItem : IWeapon, IUsable, IReloadable
     {
@@ -10,7 +11,7 @@ namespace Feature.Combat.Domain
         public Guid WorldId { get; }
         public float Cooldown { get; }
         public float ReloadCooldown => 1.35f;
-        public int MaxAmmoInClip { get; }
+        private int MaxAmmoInClip { get; }
         public int ReserveAmmo { get; private set; }
         public int CurrentAmmo { get; private set; }
         public WeaponType Type => WeaponType.Shootable;

@@ -1,8 +1,9 @@
 #nullable enable
 
 using System;
+using Features.Combat.Domain.Interfaces;
 
-namespace Feature.Combat.Domain
+namespace Features.Combat.Presentation.Interfaces
 {
     public interface IReadOnlyWeaponInventory
     {

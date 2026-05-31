@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Feature.Combat.Application
+namespace Features.Combat.Infrastructure.Interfaces
 {
     public interface IUseItemInput
     {

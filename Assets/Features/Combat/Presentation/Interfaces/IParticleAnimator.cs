@@ -1,4 +1,4 @@
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Presentation.Interfaces
 {
     public interface IParticleAnimator
     {

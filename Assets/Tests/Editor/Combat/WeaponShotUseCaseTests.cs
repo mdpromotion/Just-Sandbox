@@ -1,6 +1,4 @@
 using Feature.Combat.Application;
-using Feature.Combat.Domain;
-using Feature.Combat.Infrastructure;
 using Feature.Items.Infrastructure;
 using Feature.Toolbox.Infrastructure;
 using Moq;
@@ -9,6 +7,9 @@ using Shared.Data;
 using Shared.Domain;
 using Shared.Providers;
 using System.Numerics;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Application.UseCases;
+using Features.Combat.Domain.Interfaces;
 
 namespace Tests.Combat
 {

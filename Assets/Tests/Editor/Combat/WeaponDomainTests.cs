@@ -1,8 +1,9 @@
-using Feature.Combat.Data;
-using Feature.Combat.Domain;
 using NUnit.Framework;
 using System;
 using System.Linq;
+using Features.Combat.Data;
+using Features.Combat.Domain;
+using Features.Combat.Domain.Interfaces;
 
 namespace Tests.Combat
 {

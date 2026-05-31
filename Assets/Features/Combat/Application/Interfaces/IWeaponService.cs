@@ -1,7 +1,7 @@
 #nullable enable
 using Shared.Domain;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Application.Interfaces
 {
     public interface IWeaponService
     {

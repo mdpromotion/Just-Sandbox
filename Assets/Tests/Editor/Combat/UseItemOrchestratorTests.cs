@@ -1,6 +1,8 @@
 using Core.Data;
 using Feature.Combat.Application;
-using Feature.Combat.Domain;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Application.UseCases;
+using Features.Combat.Domain.Interfaces;
 using Moq;
 using NUnit.Framework;
 using UnityEngine;

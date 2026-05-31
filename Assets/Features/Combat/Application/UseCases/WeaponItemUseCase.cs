@@ -1,13 +1,14 @@
-using Feature.Combat.Domain;
-using Feature.Combat.Infrastructure;
 using System;
+using Feature.Combat.Application;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Domain;
 using UnityEngine;
 
-namespace Feature.Combat.Application
+namespace Features.Combat.Application.UseCases
 {
     public class WeaponItemUseCase : IWeaponItemUseCase
     {
-        public static readonly string LogTag = nameof(WeaponItemUseCase);
+        public const string LogTag = nameof(WeaponItemUseCase);
 
         private readonly WeaponInventory _weaponInventory;
         private readonly IWeaponFactory _weaponFactory;

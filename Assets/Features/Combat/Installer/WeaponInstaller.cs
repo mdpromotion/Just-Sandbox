@@ -1,10 +1,13 @@
 using Feature.Combat.Application;
-using Feature.Combat.Domain;
-using Feature.Combat.Infrastructure;
-using Feature.Combat.Presentation;
+using Features.Combat.Application.Interfaces;
+using Features.Combat.Application.UseCases;
+using Features.Combat.Domain;
+using Features.Combat.Infrastructure;
+using Features.Combat.Presentation;
+using Features.Combat.Presentation.Interfaces;
 using Zenject;
 
-public class WeaponInstaller : Installer
+public abstract class WeaponInstaller : Installer
 {
     public override void InstallBindings()
     {

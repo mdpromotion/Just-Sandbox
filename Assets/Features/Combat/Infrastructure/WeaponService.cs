@@ -1,11 +1,12 @@
 #nullable enable
 using Core.Service;
 using Feature.Core.Infrastructure;
+using Features.Combat.Application.Interfaces;
 using Shared.Domain;
 using Shared.Providers;
 using UnityEngine;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     public class WeaponService : IWeaponService
     {

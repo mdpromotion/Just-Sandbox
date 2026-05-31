@@ -1,9 +1,9 @@
-using Feature.Combat.Presentation;
-using Zenject;
+using Features.Combat.Presentation;
+using Features.Combat.Presentation.View;
 
-namespace Feature.Combat.Installers
+namespace Features.Combat.Installer
 {
-    public class WeaponUIInstaller : Installer
+    public class WeaponUIInstaller : Zenject.Installer
     {
         public override void InstallBindings()
         {

@@ -1,7 +1,7 @@
-using Feature.Combat.Data;
 using Feature.Items.Infrastructure;
+using Features.Combat.Data;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     public class WeaponProvider : ItemProvider, IWeaponProvider
     {

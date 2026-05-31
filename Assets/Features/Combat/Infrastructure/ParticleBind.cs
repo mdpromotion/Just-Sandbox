@@ -1,16 +1,16 @@
 using UnityEngine;
 
-namespace Feature.Combat.Infrastructure
+namespace Features.Combat.Infrastructure
 {
     public class ParticleBind : MonoBehaviour
     {
-        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private ParticleSystem particleSystem;
 
         public void PlayParticleEffect()
         {
-            if (_particleSystem != null)
+            if (particleSystem != null)
             {
-                _particleSystem.Emit(1);
+                particleSystem.Emit(1);
             }
         }
     }

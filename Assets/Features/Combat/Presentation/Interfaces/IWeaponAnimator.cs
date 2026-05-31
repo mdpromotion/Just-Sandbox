@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Feature.Items.Infrastructure
+namespace Features.Combat.Presentation.Interfaces
 {
     public interface IWeaponAnimator
     {
