@@ -1,5 +1,8 @@
-public interface IGameState 
+namespace Features.Core.Interfaces
 {
-    bool IsDesktop { get; }
-    int ToggleMenu(bool active);
+    public interface IGameState 
+    {
+        bool IsDesktop { get; }
+        int ToggleMenu(bool active);
+    }
 }

@@ -1,10 +1,11 @@
-using UnityEngine;
-
-public interface IGameController
+namespace Features.Core.Interfaces
 {
-    IReadOnlyGameState GameState { get; }
-    void SetPaused(bool isPaused);
-    void SetOpenedMenus(int openedMenus);
-    void SetIsDesktop(bool isDesktop);
-    void SetCurrentLanguage(Language language);
+    public interface IGameController
+    {
+        IReadOnlyGameState GameState { get; }
+        void SetPaused(bool isPaused);
+        void SetOpenedMenus(int openedMenus);
+        void SetIsDesktop(bool isDesktop);
+        void SetCurrentLanguage(Language language);
+    }
 }

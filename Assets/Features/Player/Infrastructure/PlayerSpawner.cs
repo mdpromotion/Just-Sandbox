@@ -1,6 +1,7 @@
 using Core.Service;
 using System;
 using Features.Core.Infrastructure;
+using Features.Core.Interfaces;
 using UnityEngine;
 using Zenject;
 

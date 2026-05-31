@@ -2,6 +2,7 @@ using Feature.Agent.Application;
 using Feature.Player.Data;
 using Features.Agent.Application.Interfaces;
 using Features.Agent.Infrastructure.Assembler.Interfaces;
+using Features.Core.Interfaces;
 using Shared.Data;
 using Shared.Providers;
 using UnityEngine;

@@ -1,3 +1,5 @@
+using Features.Core.Interfaces;
+
 namespace Core.Data
 {
     public interface IReadOnlyCoreGameStates

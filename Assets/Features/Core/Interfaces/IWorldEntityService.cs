@@ -1,12 +1,12 @@
 #nullable enable
-using Shared.Data;
-using Shared.Domain;
 using System;
 using System.Collections.Generic;
 using Features.Core.Infrastructure.Services.Data;
+using Shared.Data;
+using Shared.Domain;
 using UnityEngine;
 
-namespace Core.Service
+namespace Features.Core.Interfaces
 {
     public interface IWorldEntityService
     {

@@ -4,6 +4,7 @@ using Feature.Agent.Application;
 using Feature.Agent.Infrastructure;
 using Feature.Factory.Infrastructure;
 using Features.Agent.Application.Interfaces;
+using Features.Core.Interfaces;
 using Shared.Service;
 
 namespace Features.Agent.Application.Controllers

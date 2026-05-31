@@ -1,7 +1,10 @@
-public interface IReadOnlyGameState
+namespace Features.Core.Interfaces
 {
-    int OpenedMenus { get; }
-    bool IsDesktop { get; }
-    Language CurrentLanguage { get; }
-    bool IsPaused { get; }
+    public interface IReadOnlyGameState
+    {
+        int OpenedMenus { get; }
+        bool IsDesktop { get; }
+        Language CurrentLanguage { get; }
+        bool IsPaused { get; }
+    }
 }

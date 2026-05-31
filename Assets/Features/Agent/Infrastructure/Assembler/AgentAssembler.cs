@@ -2,6 +2,7 @@ using Core.Service;
 using Feature.Agent.Infrastructure;
 using Features.Agent.Application.Interfaces;
 using Features.Agent.Data;
+using Features.Core.Interfaces;
 using UnityEngine;
 
 namespace Features.Agent.Infrastructure.Assembler

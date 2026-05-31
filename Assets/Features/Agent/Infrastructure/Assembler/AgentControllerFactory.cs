@@ -8,6 +8,7 @@ using Features.Agent.Application.Controllers.Interfaces;
 using Features.Agent.Infrastructure.Assembler.Data;
 using Features.Agent.Infrastructure.Assembler.Interfaces;
 using Features.Agent.Infrastructure.Controllers;
+using Features.Core.Interfaces;
 
 namespace Features.Agent.Infrastructure.Assembler
 {

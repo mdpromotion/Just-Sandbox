@@ -1,3 +1,4 @@
+using Features.Core.Interfaces;
 using Shared.Providers;
 using Zenject;
 

@@ -4,6 +4,7 @@ using Feature.Toolbox.Domain;
 using Moq;
 using NUnit.Framework;
 using System;
+using Features.Core.Interfaces;
 using UnityEngine;
 
 namespace Tests.Toolbox
