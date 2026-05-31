@@ -1,7 +1,6 @@
-using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Feature.PlayerCamera.Application
+namespace Features.Camera.Application.Helpers
 {
     /// <summary>
     /// Provides functionality to calculate yaw and pitch rotations based on input deltas, applying sensitivity and
@@ -29,16 +28,15 @@ namespace Feature.PlayerCamera.Application
             Vector2 delta,
             float sensitivity)
         {
-            float newYaw = yaw + delta.x * sensitivity;
-            float newPitch = Clamp(pitch - delta.y * sensitivity);
+            var newYaw = yaw + delta.x * sensitivity;
+            var newPitch = Clamp(pitch - delta.y * sensitivity);
             return (newYaw, newPitch);
         }
 
         private float Clamp(float value)
         {
             if (value < _minPitch) return _minPitch;
-            if (value > _maxPitch) return _maxPitch;
-            return value;
+            return value > _maxPitch ? _maxPitch : value;
         }
     }
 }

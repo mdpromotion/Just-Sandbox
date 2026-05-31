@@ -1,10 +1,10 @@
-using Core.PlayerInput;
-using Feature.PlayerCamera.Application;
 using System;
+using Core.PlayerInput;
+using Features.Camera.Application.UseCases;
 using UnityEngine;
 using Zenject;
 
-namespace Feature.PlayerCamera.Infrastructure
+namespace Features.Camera.Infrastructure
 {
     public class InputController : IInitializable, IDisposable
     {

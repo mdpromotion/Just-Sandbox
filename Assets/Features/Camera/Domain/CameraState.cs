@@ -1,4 +1,4 @@
-namespace Feature.PlayerCamera.Domain
+namespace Features.Camera.Domain
 {
     /// <summary>
     /// Represents the state of a camera, including its orientation in terms of yaw and pitch angles.

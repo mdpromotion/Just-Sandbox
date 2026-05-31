@@ -1,3 +1,4 @@
+using Features.Camera.Installer;
 using UnityEngine;
 using Zenject;
 

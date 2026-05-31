@@ -1,7 +1,8 @@
+using Features.Camera.Application;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Feature.PlayerCamera.Infrastructure
+namespace Features.Camera.Infrastructure
 {
     public class PhysicsService : IPhysicsService
     {

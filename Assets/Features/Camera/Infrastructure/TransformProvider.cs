@@ -2,11 +2,11 @@ using Shared.Providers;
 using Unity.Cinemachine;
 using UnityEngine;
 
-namespace Feature.PlayerCamera.Infrastructure
+namespace Features.Camera.Infrastructure
 {
     public class TransformProvider : ICameraTransformData
     {
-        private CinemachineCamera _camera;
+        private readonly CinemachineCamera _camera;
 
         public Vector3 Position => _camera.transform.position;
         public Vector3 Forward => _camera.transform.forward;

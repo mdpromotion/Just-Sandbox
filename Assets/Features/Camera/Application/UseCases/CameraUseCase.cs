@@ -1,12 +1,12 @@
-using Core.Data;
-using Feature.PlayerCamera.Domain;
-using Feature.PlayerCamera.Infrastructure;
-using Feature.Storage.Domain;
-using Shared.Providers;
 using System;
+using Core.Data;
+using Feature.Storage.Domain;
+using Features.Camera.Application.Helpers;
+using Features.Camera.Domain;
+using Shared.Providers;
 using UnityEngine;
 
-namespace Feature.PlayerCamera.Application
+namespace Features.Camera.Application.UseCases
 {
     /// <summary>
     /// Provides functionality for managing and updating the camera's rotation based on player input and game state.
@@ -16,7 +16,7 @@ namespace Feature.PlayerCamera.Application
     /// application of rotations.</remarks>
     public class CameraUseCase
     {
-        private static readonly string LogTag = nameof(CameraUseCase);
+        private const string LogTag = nameof(CameraUseCase);
 
         private readonly RotationCalculator _calculator;
         private readonly IReadOnlyCoreGameStates _coreState;
@@ -28,7 +28,7 @@ namespace Feature.PlayerCamera.Application
 
         public CameraUseCase(
             RotationCalculator calculator,
-            IReadOnlyCoreGameStates coregameState,
+            IReadOnlyCoreGameStates coreGameState,
             CameraState cameraState,
             IReadOnlyControlSettings controlSettings,
             IPhysicsService cameraPhysics,
@@ -36,7 +36,7 @@ namespace Feature.PlayerCamera.Application
             ILogger logger)
         {
             _calculator = calculator;
-            _coreState = coregameState;
+            _coreState = coreGameState;
             _cameraState = cameraState;
             _controlSettings = controlSettings;
             _cameraPhysics = cameraPhysics;
@@ -48,7 +48,7 @@ namespace Feature.PlayerCamera.Application
         {
             if (!_coreState.IsPlayerControllable) return;
 
-            (float yaw, float pitch) = _calculator.CalculateRotation(
+            var (yaw, pitch) = _calculator.CalculateRotation(
                 _cameraState.Yaw,
                 _cameraState.Pitch,
                 delta,

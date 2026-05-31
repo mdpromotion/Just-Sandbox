@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Feature.PlayerCamera.Infrastructure
+namespace Features.Camera.Application
 {
     public interface IPhysicsService
     {

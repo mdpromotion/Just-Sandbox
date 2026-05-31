@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Feature.PlayerCamera.Domain
+namespace Features.Camera.Domain
 {
     public interface IReadOnlyCameraState
     {
