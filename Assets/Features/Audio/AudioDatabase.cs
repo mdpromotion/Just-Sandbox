@@ -1,25 +1,28 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AudioDatabase", menuName = "Audio/AudioDatabase")]
-
-public class AudioDatabase : ScriptableObject
+namespace Features.Audio
 {
-    [System.Serializable]
-    public class Sound
-    {
-        public string name;
-        public AudioClip clip;
-    }
+    [CreateAssetMenu(fileName = "AudioDatabase", menuName = "Audio/AudioDatabase")]
 
-    public Sound[] sounds;
-
-    public AudioClip GetClip(string soundName)
+    public class AudioDatabase : ScriptableObject
     {
-        foreach (var s in sounds)
+        [System.Serializable]
+        public class Sound
         {
-            if (s.name == soundName)
-                return s.clip;
+            public string name;
+            public AudioClip clip;
         }
-        return null;
+
+        public Sound[] sounds;
+
+        public AudioClip GetClip(string soundName)
+        {
+            foreach (var s in sounds)
+            {
+                if (s.name == soundName)
+                    return s.clip;
+            }
+            return null;
+        }
     }
 }

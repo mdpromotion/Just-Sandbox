@@ -3,6 +3,7 @@ using Feature.Combat.Domain;
 using Feature.Combat.Infrastructure;
 using Feature.Items.Infrastructure;
 using System;
+using Features.Audio.Interfaces;
 using Zenject;
 
 namespace Feature.Combat.Presentation

@@ -1,53 +1,57 @@
+using Features.Audio.Interfaces;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
-[RequireComponent(typeof(AudioSource))]
-public class AudioPlayer : MonoBehaviour, IAudioPlayer
+namespace Features.Audio
 {
-    private AudioSource _audioSource;
-    [SerializeField] private AudioDatabase _database;
-
-    private void Awake()
+    [RequireComponent(typeof(AudioSource))]
+    public class AudioPlayer : MonoBehaviour, IAudioPlayer
     {
-        _audioSource = GetComponent<AudioSource>();
-    }
+        private AudioSource _audioSource;
+        [FormerlySerializedAs("_database")] [SerializeField] private AudioDatabase database;
 
-    public void Play(string soundName)
-    {
-        if (_audioSource == null)
-            return;
-
-        var clip = _database.GetClip(soundName);
-        if (clip != null)
+        private void Awake()
         {
-            _audioSource.clip = clip;
-            _audioSource.Play();
+            _audioSource = GetComponent<AudioSource>();
         }
-        else
-        {
-            Debug.LogError($"Sound '{soundName}' not found in AudioDatabase.");
-        }
-    }
 
-    public void PlayOneShot(string soundName, float volume = 1f)
-    {
-        if (_audioSource == null)
-            return;
-
-        var clip = _database.GetClip(soundName);
-        if (clip != null)
+        public void Play(string soundName)
         {
-            _audioSource.PlayOneShot(clip, volume);
-        }
-        else
-        {
-            Debug.LogError($"Sound {soundName} not found in database");
-        }
-    }
+            if (_audioSource == null)
+                return;
 
-    public float Pitch
-    {
-        get => _audioSource.pitch;
-        set => _audioSource.pitch = value;
+            var clip = database.GetClip(soundName);
+            if (clip != null)
+            {
+                _audioSource.clip = clip;
+                _audioSource.Play();
+            }
+            else
+            {
+                Debug.LogError($"Sound '{soundName}' not found in AudioDatabase.");
+            }
+        }
+
+        public void PlayOneShot(string soundName, float volume = 1f)
+        {
+            if (_audioSource == null)
+                return;
+
+            var clip = database.GetClip(soundName);
+            if (clip != null)
+            {
+                _audioSource.PlayOneShot(clip, volume);
+            }
+            else
+            {
+                Debug.LogError($"Sound {soundName} not found in database");
+            }
+        }
+
+        public float Pitch
+        {
+            get => _audioSource.pitch;
+            set => _audioSource.pitch = value;
+        }
     }
 }

@@ -1,8 +1,7 @@
-using UnityEngine;
-
-public interface IAudioPlayer
+namespace Features.Audio.Interfaces
 {
-    public void Play(string soundName);
-    public void PlayOneShot(string soundName, float volume = 1f);
-    public float Pitch { get; set; }
+    public interface IAudioPlayer
+    {
+        public void PlayOneShot(string soundName, float volume = 1f);
+    }
 }

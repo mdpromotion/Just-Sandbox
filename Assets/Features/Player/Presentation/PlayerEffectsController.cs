@@ -1,6 +1,7 @@
 using Feature.Player.Domain;
 using Shared.Data;
 using System;
+using Features.Audio.Interfaces;
 
 namespace Feature.Player.Presentation
 {
