@@ -1,4 +1,7 @@
-namespace Feature.Agent.Infrastructure
+using Feature.Agent.Infrastructure;
+using Features.Agent.Infrastructure.Controllers;
+
+namespace Features.Agent.Infrastructure.Assembler.Data
 {
     public readonly struct AgentComponentsOutput
     {

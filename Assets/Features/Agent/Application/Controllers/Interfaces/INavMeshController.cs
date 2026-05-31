@@ -1,6 +1,6 @@
 using Shared.Data;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Application.Controllers.Interfaces
 {
     public interface INavMeshController
     {

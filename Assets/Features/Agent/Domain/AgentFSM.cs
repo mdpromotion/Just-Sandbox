@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Features.Agent.Domain.Interfaces;
 
 namespace Feature.Agent.Domain
 {

@@ -1,4 +1,7 @@
-namespace Feature.Agent.Infrastructure
+using Feature.Agent.Infrastructure;
+using Features.Agent.Infrastructure.ScriptableObjects;
+
+namespace Features.Agent.Infrastructure.Ports
 {
     public class AgentProvider : IAgentProvider
     {

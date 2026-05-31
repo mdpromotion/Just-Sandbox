@@ -1,10 +1,11 @@
-using Feature.Agent.Application;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Features.Agent.Application.Interfaces;
+using Features.Agent.Domain.Interfaces;
+using Features.Agent.Infrastructure.Services.Interfaces;
 using Zenject;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Services
 {
     public class AIUpdateService : ITickable, IAIUpdateService
     {
@@ -13,11 +14,9 @@ namespace Feature.Agent.Infrastructure
 
         public void RegisterAgent(Guid entityId, IAgentController controller, IDamageController damageController)
         {
-            if (!_controllers.ContainsKey(entityId))
-                _controllers.Add(entityId, controller);
+            _controllers.TryAdd(entityId, controller);
 
-            if (!_damageControllers.ContainsKey(entityId))
-                _damageControllers.Add(entityId, damageController);
+            _damageControllers.TryAdd(entityId, damageController);
         }
 
         public void UnregisterAgent(Guid entityId) 

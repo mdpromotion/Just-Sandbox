@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent
 {
     public interface IAgentConfigurator
     {
-        Result Configure(GameObject go, Domain.Agent agent);
+        Result Configure(GameObject go, Feature.Agent.Domain.Agent agent);
     }
 }

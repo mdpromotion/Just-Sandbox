@@ -1,10 +1,12 @@
+using System;
 using Core.Service;
+using Feature.Agent.Application;
 using Feature.Agent.Infrastructure;
 using Feature.Factory.Infrastructure;
+using Features.Agent.Application.Interfaces;
 using Shared.Service;
-using System;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Application.Controllers
 {
     /// <summary>
     /// Manages the lifecycle of agents within the game, including their burial and unregistration from the AI system.
@@ -36,7 +38,7 @@ namespace Feature.Agent.Application
             var agentObj = _entityService.GetGameObject(entityId);
             _entityService.Unbind(entityId);
             _aiService.UnregisterAgent(entityId);
-            if (agentObj != null)
+            if (agentObj)
                 _delayService.ExecuteAfterDelay(3f, () => _gameObjectFactory.Release(agentObj));
         }
     }

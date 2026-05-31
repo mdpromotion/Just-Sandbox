@@ -1,4 +1,6 @@
 using Feature.Agent.Infrastructure;
+using Features.Agent.Infrastructure.Ports;
+using Features.Agent.Infrastructure.ScriptableObjects;
 
 namespace Feature.Toolbox.Infrastructure
 {

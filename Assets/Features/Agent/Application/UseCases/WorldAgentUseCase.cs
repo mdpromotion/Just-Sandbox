@@ -1,11 +1,11 @@
-using Feature.Agent.Infrastructure;
-using Feature.Toolbox.Infrastructure;
-using Shared.Data;
-using Shared.Domain;
 using System;
+using Feature.Agent.Application;
+using Feature.Agent.Infrastructure;
+using Features.Agent.Application.Interfaces;
+using Shared.Data;
 using UnityEngine;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Application.UseCases
 {
     /// <summary>
     /// Handles the spawning and initialization of non-player characters (NPCs) within the game world.
@@ -33,7 +33,7 @@ namespace Feature.Agent.Application
         {
             var factoryResult = _agentFactory.CreateAgent(agentProvider, obj);
             if (!factoryResult.IsSuccess)
-                return Result<AgentContext>.Failure(factoryResult.Error);
+                return Result<AgentContext>.Failure(factoryResult.Error!);
 
             var agent = factoryResult.Value.Agent;
             var controller = factoryResult.Value.Controller;
@@ -41,7 +41,7 @@ namespace Feature.Agent.Application
 
             var configResult = _configurator.Configure(obj, agent);
             if (!configResult.IsSuccess)
-                return Result<AgentContext>.Failure(configResult.Error);
+                return Result<AgentContext>.Failure(configResult.Error!);
 
             _aiUpdateService.RegisterAgent(agent.Id, controller, damageController);
 

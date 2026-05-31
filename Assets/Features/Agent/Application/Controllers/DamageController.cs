@@ -1,9 +1,12 @@
-using Feature.Agent.Infrastructure;
+using Feature.Agent.Application;
 using Feature.Player.Data;
+using Features.Agent.Application.Controllers.Interfaces;
+using Features.Agent.Infrastructure.Assembler.Interfaces;
+using Features.Agent.Infrastructure.Services.Interfaces;
 using Shared.Data;
 using Shared.Domain;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Application.Controllers
 {
     /// <summary>
     /// Controls damage interactions for an attacker, managing target detection and executing attacks based on the
@@ -15,15 +18,15 @@ namespace Feature.Agent.Application
     /// attacker is alive.</remarks>
     public class DamageController : IDamageController
     {
-        private readonly Domain.Agent _attacker;
+        private readonly Feature.Agent.Domain.Agent _attacker;
         private readonly IAttackUseCase _attackUseCase;
         private readonly ITriggerHandler _triggerHandler;
         private readonly INavMeshController _controller;
 
         private ITarget _currentTarget;
-        private Position3 _position => _controller.Position;
+        private Position3 Position => _controller.Position;
 
-        public DamageController(Domain.Agent attacker, IAttackUseCase attackUseCase, ITriggerHandler triggerHandler, INavMeshController controller)
+        public DamageController(Feature.Agent.Domain.Agent attacker, IAttackUseCase attackUseCase, ITriggerHandler triggerHandler, INavMeshController controller)
         {
             _attacker = attacker;
             _attackUseCase = attackUseCase;
@@ -34,12 +37,12 @@ namespace Feature.Agent.Application
             _triggerHandler.TargetExited += OnTargetExited;
         }
 
-        public void OnTargetEntered(ITarget target)
+        private void OnTargetEntered(ITarget target)
         {
             _currentTarget = target;
         }
 
-        public void OnTargetExited(ITarget target)
+        private void OnTargetExited(ITarget target)
         {
             if (_currentTarget == target)
             {
@@ -57,7 +60,7 @@ namespace Feature.Agent.Application
                 _attacker.Damage,
                 _attacker.AttackSpeed,
                 _currentTarget,
-                _position);
+                Position);
 
             _attackUseCase.Attack(attackData);
         }

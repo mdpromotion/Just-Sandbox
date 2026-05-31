@@ -1,13 +1,20 @@
 using Core.Data;
 using Core.Service;
+using Feature.Agent.Application;
 using Feature.Agent.Domain;
 using Feature.Agent.Infrastructure;
+using Features.Agent.Application.Controllers;
+using Features.Agent.Application.Controllers.Interfaces;
+using Features.Agent.Infrastructure.Assembler.Data;
+using Features.Agent.Infrastructure.Assembler.Interfaces;
+using Features.Agent.Infrastructure.Controllers;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Infrastructure.Assembler
 {
     public interface IAgentControllerFactory
     {
-        AgentControllerOutput Create(Domain.Agent agent, NavMeshController navMesh, TriggerHandler trigger, AgentFSM fsm);
+        AgentControllerOutput Create(Feature.Agent.Domain.Agent agent, INavMeshController navMesh,
+            TriggerHandler trigger, AgentFSM fsm);
     }
 
     public class AgentControllerFactory : IAgentControllerFactory
@@ -23,7 +30,8 @@ namespace Feature.Agent.Application
             _attackUseCase = attackUseCase;
         }
 
-        public AgentControllerOutput Create(Domain.Agent agent, NavMeshController navMesh, TriggerHandler trigger, AgentFSM fsm)
+        public AgentControllerOutput Create(Feature.Agent.Domain.Agent agent, INavMeshController navMesh,
+            TriggerHandler trigger, AgentFSM fsm)
         {
             var navigationController = new NavigationController(_entityService, agent, agent.VisionRange);
 

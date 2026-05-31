@@ -1,7 +1,6 @@
-using Core.Service.Data;
 using Shared.Data;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Domain.Interfaces
 {
     public interface IAgentController
     {

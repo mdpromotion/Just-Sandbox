@@ -1,18 +1,19 @@
-using Shared.Domain;
 using System;
+using Feature.Agent.Infrastructure;
+using Shared.Domain;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Assembler
 {
     public interface IAgentFactory
     {
-        Domain.Agent Create(IAgentProvider provider);
+        Feature.Agent.Domain.Agent Create(IAgentProvider provider);
     }
 
     public class AgentFactory : IAgentFactory
     {
-        public Domain.Agent Create(IAgentProvider provider)
+        public Feature.Agent.Domain.Agent Create(IAgentProvider provider)
         {
-            return new Domain.Agent(
+            return new Feature.Agent.Domain.Agent(
                 Guid.NewGuid(),
                 Team.Enemy,
                 provider.Name,

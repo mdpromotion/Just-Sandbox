@@ -1,10 +1,10 @@
-using Feature.Core.Infrastructure;
-using Shared.Domain;
 using System;
+using Feature.Core.Infrastructure;
+using Features.Agent.Application.Controllers.Interfaces;
+using Shared.Domain;
 using UnityEngine;
 
-
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Controllers
 {
     public class TriggerHandler : MonoBehaviour, ITriggerHandler
     {

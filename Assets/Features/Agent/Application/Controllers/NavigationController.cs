@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using Core.Service;
 using Core.Service.Data;
 using Shared.Data;
 using Shared.Domain;
-using System.Collections.Generic;
 
-namespace Feature.Agent.Application 
+namespace Features.Agent.Application.Controllers 
 {
     /// <summary>
     /// Provides navigation functionality for an entity, including the ability to locate the nearest entity within a
@@ -19,7 +19,7 @@ namespace Feature.Agent.Application
         private readonly IWorldEntityService _entityService;
         private readonly IEntity _entity;
         private readonly float _visionRange;
-
+        
         private readonly List<EntityTransformData> _entitiesBuffer = new(32);
 
         public NavigationController(IWorldEntityService entityService, IEntity entity, float visionRange)

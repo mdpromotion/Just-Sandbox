@@ -1,7 +1,7 @@
-using Shared.Data;
 using System;
+using Shared.Data;
 
-namespace Feature.Agent.Domain
+namespace Features.Agent.Domain.Interfaces
 {
     public interface ILifeEvents
     {

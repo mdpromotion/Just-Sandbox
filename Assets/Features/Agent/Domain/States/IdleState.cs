@@ -1,4 +1,5 @@
 using Feature.Agent.Application;
+using Features.Agent.Domain.Interfaces;
 
 namespace Feature.Agent.Domain
 {

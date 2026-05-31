@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Features.Agent.Infrastructure.ScriptableObjects;
 using UnityEngine;
 using Zenject;
 

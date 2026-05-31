@@ -1,10 +1,13 @@
-using Feature.Agent.Application;
+using Features.Agent.Application;
+using Features.Agent.Application.Interfaces;
+using Features.Agent.Domain.Interfaces;
+using Features.Agent.Infrastructure.Assembler.Interfaces;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Assembler
 {
     public interface IFacadeFactory
     {
-        AgentFacade Create(Domain.Agent agent, IAgentController controller);
+        AgentFacade Create(Feature.Agent.Domain.Agent agent, IAgentController controller);
     }
 
     public class FacadeFactory : IFacadeFactory
@@ -19,7 +22,7 @@ namespace Feature.Agent.Infrastructure
             _agentLifeController = agentLifeController;
         }
 
-        public AgentFacade Create(Domain.Agent agent, IAgentController controller)
+        public AgentFacade Create(Feature.Agent.Domain.Agent agent, IAgentController controller)
         {
             return new AgentFacade(agent, controller, _lifeUseCase, _agentLifeController);
         }

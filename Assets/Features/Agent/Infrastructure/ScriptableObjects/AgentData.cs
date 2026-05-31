@@ -1,15 +1,17 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
-[CreateAssetMenu(fileName = "AgentData", menuName = "Data/Agent")]
-public class AgentData : ScriptableObject
+namespace Features.Agent.Infrastructure.ScriptableObjects
 {
-    public int Id;
-    public string Name;
-    public float MaxHealth;
-    public float Speed;
-    public float Damage;
-    public float AttackSpeed;
-    public float VisionRange;
-    public string PrefabAddress;
+    [CreateAssetMenu(fileName = "AgentData", menuName = "Data/Agent")]
+    public class AgentData : ScriptableObject
+    {
+        public int Id;
+        public string Name;
+        public float MaxHealth;
+        public float Speed;
+        public float Damage;
+        public float AttackSpeed;
+        public float VisionRange;
+        public string PrefabAddress;
+    }
 }

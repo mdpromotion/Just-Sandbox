@@ -1,6 +1,9 @@
+using Feature.Agent.Application;
+using Features.Agent.Domain.Interfaces;
+using Features.Agent.Infrastructure.Assembler.Interfaces;
 using Shared.Data;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Application.UseCases
 {
     /// <summary>
     /// Provides functionality for managing agent life events, including handling damage and death interactions within
@@ -12,18 +15,18 @@ namespace Feature.Agent.Application
     /// handling and maintain consistent interaction effects across agents.</remarks>
     public class LifeUseCase : ILifeUseCase
     {
-        private readonly float _offsetY = 0.75f;
+        private const float OffsetY = 0.75f;
 
         public Result OnAgentDamaged(IAgentController controller, AttackInfo attackInfo)
         {
-            Position3 velocity = CalculateKnockback(controller.AgentPosition, attackInfo);
+            var velocity = CalculateKnockback(controller.AgentPosition, attackInfo);
 
             controller.Punch(velocity);
             return Result.Success();
         }
         public Result OnAgentDied(IAgentController controller, AttackInfo attackInfo)
         {
-            Position3 velocity = CalculateKnockback(controller.AgentPosition, attackInfo);
+            var velocity = CalculateKnockback(controller.AgentPosition, attackInfo);
 
             controller.Die(velocity);
             return Result.Success();
@@ -31,10 +34,10 @@ namespace Feature.Agent.Application
 
         private Position3 CalculateKnockback(Position3 agentPosition, AttackInfo attackInfo)
         {
-            Position3 direction = agentPosition - attackInfo.AttackerPosition;
+            var direction = agentPosition - attackInfo.AttackerPosition;
             direction = direction.Normalize();
 
-            direction.Y = _offsetY;
+            direction.Y = OffsetY;
 
             return direction * attackInfo.Knockback;
         }

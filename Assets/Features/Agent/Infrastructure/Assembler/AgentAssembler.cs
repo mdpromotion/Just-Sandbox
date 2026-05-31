@@ -1,9 +1,10 @@
 using Core.Service;
-using Feature.Agent.Application;
-using Feature.Agent.Data;
+using Feature.Agent.Infrastructure;
+using Features.Agent.Application.Interfaces;
+using Features.Agent.Data;
 using UnityEngine;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Assembler
 {
     public class AgentAssembler : IAgentAssembler
     {
@@ -14,7 +15,7 @@ namespace Feature.Agent.Infrastructure
         private readonly IFacadeFactory _facadeFactory;
         private readonly IWorldEntityService _entityService;
 
-        public AgentAssembler(IAgentFactory agentFactory, 
+        protected AgentAssembler(IAgentFactory agentFactory, 
             IAgentComponentResolver agentComponentResolver, 
             IAgentControllerFactory controllerFactory,
             IAgentFsmFactory fsmFactory, 
@@ -35,18 +36,19 @@ namespace Feature.Agent.Infrastructure
 
             var componentsResult = _agentComponentResolver.Resolve(obj);
             if (!componentsResult.IsSuccess)
-                return Result<FactoryOutput>.Failure(componentsResult.Error);
+                if (componentsResult.Error != null)
+                    return Result<FactoryOutput>.Failure(componentsResult.Error);
 
             var components = componentsResult.Value;
             components.Controller.SetSpeed(provider.Speed);
 
-            var fsm = _fsmFactory.CreateFSM();
+            var fsm = _fsmFactory.CreateFsm();
 
             var controllerOutput = _controllerFactory.Create(agent, components.Controller, components.TriggerHandler, fsm);
 
             var facade = _facadeFactory.Create(agent, controllerOutput.Controller);
 
-            _fsmFactory.InitFSM(fsm, controllerOutput.Controller);
+            _fsmFactory.InitFsm(fsm, controllerOutput.Controller);
             _entityService.Bind(agent, obj);
 
             return Result<FactoryOutput>.Success(

@@ -1,6 +1,9 @@
+using Feature.Agent.Infrastructure;
+using Features.Agent.Infrastructure.Assembler.Data;
+using Features.Agent.Infrastructure.Controllers;
 using UnityEngine;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Assembler
 {
     public interface IAgentComponentResolver
     {
@@ -16,7 +19,7 @@ namespace Feature.Agent.Infrastructure
                     .Failure($"No NavMeshController on {obj.name}");
 
             var trigger = obj.GetComponentInChildren<TriggerHandler>();
-            if (trigger == null)
+            if (!trigger)
                 return Result<ResolverOutput>
                     .Failure($"No TriggerHandler on {obj.name}");
 

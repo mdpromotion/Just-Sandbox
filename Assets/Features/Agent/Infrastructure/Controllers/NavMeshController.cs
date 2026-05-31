@@ -1,17 +1,11 @@
+using Feature.Agent.Infrastructure;
+using Features.Agent.Application.Controllers.Interfaces;
 using Shared.Data;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Controllers
 {
-    /// <summary>
-    /// Provides navigation and movement control for a character using Unity's NavMeshAgent, enabling movement towards
-    /// specified destinations and handling actions such as starting, stopping, punching, and dying.
-    /// </summary>
-    /// <remarks>This class requires NavMeshAgent, Transform, Rigidbody, and MaterialController components to
-    /// function correctly. It manages the character's movement state and performs ground checks to determine when
-    /// navigation should be enabled or disabled. Use this controller to direct character movement and apply physical
-    /// forces for gameplay actions.</remarks>
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(Rigidbody))]
@@ -24,7 +18,7 @@ namespace Feature.Agent.Infrastructure
         private MaterialController _materialController;
 
         private bool _isAlive = true;
-        public Position3 Position => Mapper.ToPosition3(_transform.position);
+        public Position3 Position => _transform.position.ToPosition3();
 
         private float _groundCheckTimer;
         private float _timeBeforeGroundCheck = 1f;
@@ -68,14 +62,14 @@ namespace Feature.Agent.Infrastructure
         public void SetDestination(Position3 destination)
         {
             if (_agent.enabled)
-                _agent.SetDestination(Mapper.ToVector3(destination));
+                _agent.SetDestination(destination.ToVector3());
         }
 
         public void Punch(Position3 velocity)
         {
             ToggleAgent(false);
             _timeBeforeGroundCheck = TimeBeforeGroundCheckDefault;
-            _rb.AddForce(Mapper.ToVector3(velocity), ForceMode.VelocityChange);
+            _rb.AddForce(velocity.ToVector3(), ForceMode.VelocityChange);
             _materialController.Hurt();
         }
 
@@ -83,7 +77,7 @@ namespace Feature.Agent.Infrastructure
         {
             _isAlive = false;
             ToggleAgent(false);
-            _rb.AddForce(Mapper.ToVector3(velocity), ForceMode.VelocityChange);
+            _rb.AddForce(velocity.ToVector3(), ForceMode.VelocityChange);
             UnfreezeAgent();
             _materialController.Hurt();
         }

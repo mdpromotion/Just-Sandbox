@@ -1,19 +1,12 @@
 using Core.Data;
-using Core.Service.Data;
+using Feature.Agent.Application;
 using Feature.Agent.Domain;
-using Feature.Agent.Infrastructure;
+using Features.Agent.Application.Controllers.Interfaces;
+using Features.Agent.Domain.Interfaces;
 using Shared.Data;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Application.Controllers
 {
-    /// <summary>
-    /// Controls the behavior and actions of an agent within the game world, managing its state and interactions with
-    /// entities.
-    /// </summary>
-    /// <remarks>The AgentController utilizes a finite state machine (FSM) to determine the agent's current
-    /// state and behavior. It interacts with the IWorldEntityService to find nearby entities and uses a navigation mesh
-    /// controller to manage movement. The agent's vision range can be configured during instantiation, affecting its
-    /// ability to detect nearby entities.</remarks>
     public class AgentController : IAgentController
     {
         private readonly NavigationController _navigationController;
@@ -23,7 +16,7 @@ namespace Feature.Agent.Application
 
         public Position3 AgentPosition => _controller.Position;
         private Position3 _targetPosition = Position3.Zero;
-
+        
         public AgentController(
             NavigationController navigationController,
             IReadOnlyCoreGameStates gameState,
@@ -35,7 +28,7 @@ namespace Feature.Agent.Application
             _controller = controller;
             _fsm = fsm;
         }
-
+        
         public void Tick()
         {
             if (!_gameState.IsPlayerControllable)
@@ -52,7 +45,7 @@ namespace Feature.Agent.Application
         private void EvaluateTransitions()
         {
             var agentPosition = _controller.Position;
-            bool targetFound = _navigationController.FindNearestEntity(agentPosition, out var nearestEntity);
+            var targetFound = _navigationController.FindNearestEntity(agentPosition, out var nearestEntity);
 
             if (!targetFound)
             {
@@ -64,7 +57,7 @@ namespace Feature.Agent.Application
 
             switch (_fsm.CurrentState)
             {
-                case IdleState when targetFound:
+                case IdleState when true:
                     RequestStateChange("Move");
                     break;
             }

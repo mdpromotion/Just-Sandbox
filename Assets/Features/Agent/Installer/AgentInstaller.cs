@@ -2,6 +2,14 @@ using Feature.Agent.Application;
 using Feature.Agent.Domain;
 using Feature.Agent.Infrastructure;
 using Feature.Toolbox.Infrastructure;
+using Features.Agent;
+using Features.Agent.Application.Controllers;
+using Features.Agent.Application.Interfaces;
+using Features.Agent.Application.UseCases;
+using Features.Agent.Domain;
+using Features.Agent.Infrastructure.Assembler;
+using Features.Agent.Infrastructure.Assembler.Interfaces;
+using Features.Agent.Infrastructure.Services;
 using Zenject;
 
 public class AgentInstaller : Installer

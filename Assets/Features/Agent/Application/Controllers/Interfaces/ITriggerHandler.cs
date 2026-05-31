@@ -1,7 +1,7 @@
-using Shared.Domain;
 using System;
+using Shared.Domain;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Application.Controllers.Interfaces
 {
     public interface ITriggerHandler
     {

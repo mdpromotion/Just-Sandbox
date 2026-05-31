@@ -1,11 +1,12 @@
-using Feature.Agent.Domain;
+using Feature.Agent.Application;
 using Feature.Player.Data;
+using Features.Agent.Application.Interfaces;
+using Features.Agent.Infrastructure.Assembler.Interfaces;
 using Shared.Data;
-using Shared.Domain;
 using Shared.Providers;
 using UnityEngine;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Application.UseCases
 {
     /// <summary>
     /// Handles the execution of attack actions within the game, managing cooldowns and game state.
@@ -16,16 +17,16 @@ namespace Feature.Agent.Application
     /// cooldown.</remarks>
     public class AttackUseCase : IAttackUseCase
     {
-        private readonly static string LogTag = nameof(AttackUseCase);
+        private const string LogTag = nameof(AttackUseCase);
 
         private readonly IReadOnlyGameState _gameState;
         private readonly ITimeProvider _time;
         private readonly ICooldownService _cooldown;
         private readonly ILogger _logger;
 
-        private readonly float _baseCooldown = 3f;
+        private const float BaseCooldown = 3f;
 
-        public AttackUseCase(
+        protected AttackUseCase(
             IReadOnlyGameState gameState,
             ITimeProvider time,
             ICooldownService cooldown,
@@ -59,7 +60,7 @@ namespace Feature.Agent.Application
                 return;
             }
 
-            float cooldown = _baseCooldown / data.AttackSpeed;
+            float cooldown = BaseCooldown / data.AttackSpeed;
 
             _cooldown.UpdateAttackTime(data.Attacker.Id, _time.Now, cooldown);
         }

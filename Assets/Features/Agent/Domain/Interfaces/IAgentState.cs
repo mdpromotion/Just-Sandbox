@@ -1,4 +1,4 @@
-namespace Feature.Agent.Domain
+namespace Features.Agent.Domain.Interfaces
 {
     public interface IAgentState
     {

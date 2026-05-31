@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Features.Agent.Application.Interfaces;
 
-namespace Feature.Agent.Domain
+namespace Features.Agent.Domain
 {
     public class CooldownService : ICooldownService
     {

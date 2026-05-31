@@ -1,6 +1,7 @@
 using Shared.Data;
 using Shared.Domain;
 using System;
+using Features.Agent.Domain.Interfaces;
 
 namespace Feature.Agent.Domain
 {

@@ -1,4 +1,4 @@
-namespace Feature.Agent.Application
+namespace Features.Agent.Infrastructure.Services.Interfaces
 {
     public interface IDamageController
     {

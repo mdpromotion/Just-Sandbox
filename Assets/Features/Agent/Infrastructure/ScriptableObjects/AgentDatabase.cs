@@ -1,14 +1,22 @@
 #nullable enable
-using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "AgentDB", menuName = "Database/Agent")]
-public class AgentDatabase : ScriptableObject
+namespace Features.Agent.Infrastructure.ScriptableObjects
 {
-    [SerializeField] private AgentData[]? _agents;
-
-    public AgentData? GetById(int id)
+    [CreateAssetMenu(fileName = "AgentDB", menuName = "Database/Agent")]
+    public class AgentDatabase : ScriptableObject
     {
-        return _agents.FirstOrDefault(s => s.Id == id);
+        [FormerlySerializedAs("_agents")] [SerializeField] private AgentData[]? agents;
+
+        public AgentData? GetById(int id)
+        {
+            foreach (var s in agents!)
+            {
+                if (s.Id == id) return s;
+            }
+
+            return null;
+        }
     }
 }

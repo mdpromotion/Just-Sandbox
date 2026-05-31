@@ -1,6 +1,6 @@
 using Feature.Player.Data;
 
-namespace Feature.Agent.Application
+namespace Features.Agent.Infrastructure.Assembler.Interfaces
 {
     public interface IAttackUseCase
     {

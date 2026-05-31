@@ -1,4 +1,7 @@
-namespace Feature.Agent.Data
+using Features.Agent.Application;
+using Features.Agent.Application.Controllers;
+
+namespace Features.Agent.Data
 {
     /// <summary>
     /// Encapsulates the set of components produced by an agent factory, including the agent instance, its finite state
@@ -9,21 +12,21 @@ namespace Feature.Agent.Data
     /// controllers, enabling coordinated operations and lifecycle management.</remarks>
     public readonly struct FactoryOutput
     {
-        public Domain.Agent Agent { get; }
-        public Domain.AgentFSM FSM { get; }
-        public Application.AgentFacade Facade { get; }
-        public Application.AgentController Controller { get; }
-        public Application.DamageController DamageController { get; }
+        public Feature.Agent.Domain.Agent Agent { get; }
+        public Feature.Agent.Domain.AgentFSM Fsm { get; }
+        public AgentFacade Facade { get; }
+        public AgentController Controller { get; }
+        public DamageController DamageController { get; }
 
         public FactoryOutput(
-            Domain.Agent agent, 
-            Domain.AgentFSM fsm, 
-            Application.AgentFacade facade,
-            Application.AgentController controller,
-            Application.DamageController damageController)
+            Feature.Agent.Domain.Agent agent, 
+            Feature.Agent.Domain.AgentFSM fsm, 
+            AgentFacade facade,
+            AgentController controller,
+            DamageController damageController)
         {
             Agent = agent;
-            FSM = fsm;
+            Fsm = fsm;
             Facade = facade;
             Controller = controller;
             DamageController = damageController;

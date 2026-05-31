@@ -1,6 +1,6 @@
-using Feature.Agent.Application;
+using Features.Agent.Application.Controllers;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Assembler.Data
 {
     public readonly struct AgentControllerOutput
     {

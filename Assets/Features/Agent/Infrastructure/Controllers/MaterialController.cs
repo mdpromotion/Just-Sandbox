@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-namespace Feature.Agent.Infrastructure
+namespace Features.Agent.Infrastructure.Controllers
 {
     [RequireComponent(typeof(Renderer))]
     public class MaterialController : MonoBehaviour
@@ -9,7 +8,7 @@ namespace Feature.Agent.Infrastructure
         private Renderer _renderer;
 
         private Color _defaultColor;
-        private Color _damageColor = Color.red;
+        private readonly Color _damageColor = Color.red;
 
         private bool _isHurt;
         private float _hurtTimer;
